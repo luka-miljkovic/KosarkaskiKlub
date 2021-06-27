@@ -7,6 +7,7 @@ using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
+using View.Exceptions;
 
 namespace View.Communication
 {
@@ -28,12 +29,12 @@ namespace View.Communication
             }
             catch (IOException ex)
             {
-                throw new ServerException(ex.Message);
+                throw new System.Runtime.Remoting.ServerException(ex.Message);
             }
             catch (SocketException ex)
             {
 
-                throw new ServerException(ex.Message);
+                throw new System.Runtime.Remoting.ServerException(ex.Message);
             }
         }
         public object GetResponseResult()

@@ -86,6 +86,14 @@
       <Project>{655d67a0-b6bc-41d3-bd14-3f89c9f3dc21}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{fdf2dbaa-d3fe-467c-a224-8d217f5a9080}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domen\Domain.csproj">
+      <Project>{b9058e66-3c60-4826-b5b8-e9d09710754c}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

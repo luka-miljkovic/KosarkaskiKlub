@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Domen;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -12,6 +14,10 @@ namespace Server
     public class Server
     {
         Socket serverSocket;
+        private List<ClientHandler> clients = new List<ClientHandler>();
+        private BindingList<Trener> treneri = new BindingList<Trener>();
+
+        public BindingList<Trener> Treneri { get { return treneri; } }
 
         public Server()
         {
@@ -30,7 +36,8 @@ namespace Server
                 while (true)
                 {
                     Socket clientSocket = serverSocket.Accept();
-                    ClientHandler clientHandler = new ClientHandler(clientSocket);
+                    ClientHandler clientHandler = new ClientHandler(clientSocket, treneri);
+                    clients.Add(clientHandler);
                     Thread thread = new Thread(clientHandler.StartHandler);
                     thread.IsBackground = true;
                     thread.Start();

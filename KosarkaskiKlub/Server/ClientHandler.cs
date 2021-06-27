@@ -1,6 +1,8 @@
 ﻿using Common;
+using Domen;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
@@ -14,10 +16,13 @@ namespace Server
     public class ClientHandler
     {
         private Socket clientSocket;
+        private readonly BindingList<Trener> treneri;
+        private Trener ulogovanTrener;
 
-        public ClientHandler(Socket clientSocket)
+        public ClientHandler(Socket clientSocket, BindingList<Trener> treneri)
         {
             this.clientSocket = clientSocket;
+            this.treneri = treneri;
         }
 
         public void StartHandler()
@@ -48,7 +53,7 @@ namespace Server
                 Console.WriteLine("Doslo je do prekida veze");
                 //obratiti paznju na EventHandler FrmMain FormClosed (ako zatvorimo glavnu formu, i prakticno se izlogujemo, prekidamo vezu sa serverom
                 //drugi nacin bi bio da posaljemo zahtev sa operacijom logout, tako da klijent ostane povezan
-                //users.Remove(loggedInUser);
+                treneri.Remove(ulogovanTrener);
 
             }
             catch (SerializationException)
@@ -56,14 +61,43 @@ namespace Server
                 Console.WriteLine("Doslo je do prekida veze");
                 //obratiti paznju na EventHandler FrmMain FormClosed (ako zatvorimo glavnu formu, i prakticno se izlogujemo, prekidamo vezu sa serverom
                 //drugi nacin bi bio da posaljemo zahtev sa operacijom logout, tako da klijent ostane povezan
-                //users.Remove(loggedInUser);
-
+                treneri.Remove(ulogovanTrener);
+ 
             }
         }
 
         private Response ProcessRequest(Request request)
         {
-            throw new NotImplementedException();
+            Response response = new Response();
+            response.IsSuccessful = true;
+
+            switch (request.Operation)
+            {
+                case Operation.Login:
+                    Trener trener = Controller.Controller.Instance.Login((Trener)request.RequestObject);
+                    if(trener != null)
+                    {
+                        foreach(Trener t in treneri)
+                        {
+                            if(t.KorisnickoIme == trener.KorisnickoIme && t.Lozinka == trener.Lozinka)
+                            {
+                                //System.Windows.Forms.MessageBox.Show("Vec ste ulogovani!");
+                                trener = null;
+                                break;
+                            }
+                        }
+                        if(trener != null)
+                        {
+                            ulogovanTrener = trener;
+                            treneri.Add(ulogovanTrener);
+                        }
+                    }
+                    response.Result = trener;
+                    break;
+                default:
+                    break;
+            }
+            return response;
         }
     }
 }

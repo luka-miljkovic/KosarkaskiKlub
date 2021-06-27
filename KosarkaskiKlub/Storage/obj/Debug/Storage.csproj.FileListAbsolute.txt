@@ -1,0 +1,11 @@
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\bin\Debug\Storage.dll
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\bin\Debug\Storage.pdb
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\bin\Debug\DataBaseBroker.dll
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\bin\Debug\Domen.dll
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\bin\Debug\DataBaseBroker.pdb
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\bin\Debug\Domen.pdb
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\obj\Debug\Storage.csprojAssemblyReference.cache
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\obj\Debug\Storage.csproj.CoreCompileInputs.cache
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\obj\Debug\Storage.csproj.CopyComplete
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\obj\Debug\Storage.dll
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\Storage\obj\Debug\Storage.pdb

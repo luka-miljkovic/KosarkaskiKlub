@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common;
+using Domen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -38,6 +40,17 @@ namespace View.Communication
             socket.Connect("127.0.0.1", 9000);
             client = new CommunicationClient(socket);
 
+        }
+
+        internal Trener Login(string korisnickoIme, string lozinka)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.Login,
+                RequestObject = new Trener { KorisnickoIme = korisnickoIme, Lozinka = lozinka }
+            };
+            client.SendRequest(request);
+            return (Trener)client.GetResponseResult();
         }
 
         internal void Disconnect()

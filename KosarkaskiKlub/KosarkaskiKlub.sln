@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domen", "Domen\Domen.csproj", "{B9058E66-3C60-4826-B5B8-E9D09710754C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domen\Domain.csproj", "{B9058E66-3C60-4826-B5B8-E9D09710754C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{A1B1F3D4-4262-4134-9C26-C226DDCE3A82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{655D67A0-B6BC-41D3-BD14-3F89C9F3DC21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{9AF0AD9D-C06E-4457-84E4-37F4F9322EC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{FDF2DBAA-D3FE-467C-A224-8D217F5A9080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "Storage\Storage.csproj", "{5A53CD76-8E05-45BC-9AF4-4205B9E4264A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseBroker", "DataBaseBroker\DataBaseBroker.csproj", "{2C8A3929-0546-436A-92C4-AEDD576A6774}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemOperations", "SystemOperations\SystemOperations.csproj", "{63EB060D-C3AF-4333-A4FD-EC886AF86879}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +41,22 @@ Global
 		{9AF0AD9D-C06E-4457-84E4-37F4F9322EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AF0AD9D-C06E-4457-84E4-37F4F9322EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AF0AD9D-C06E-4457-84E4-37F4F9322EC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF2DBAA-D3FE-467C-A224-8D217F5A9080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF2DBAA-D3FE-467C-A224-8D217F5A9080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF2DBAA-D3FE-467C-A224-8D217F5A9080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF2DBAA-D3FE-467C-A224-8D217F5A9080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A53CD76-8E05-45BC-9AF4-4205B9E4264A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A53CD76-8E05-45BC-9AF4-4205B9E4264A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A53CD76-8E05-45BC-9AF4-4205B9E4264A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A53CD76-8E05-45BC-9AF4-4205B9E4264A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C8A3929-0546-436A-92C4-AEDD576A6774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C8A3929-0546-436A-92C4-AEDD576A6774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C8A3929-0546-436A-92C4-AEDD576A6774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8A3929-0546-436A-92C4-AEDD576A6774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63EB060D-C3AF-4333-A4FD-EC886AF86879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63EB060D-C3AF-4333-A4FD-EC886AF86879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63EB060D-C3AF-4333-A4FD-EC886AF86879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63EB060D-C3AF-4333-A4FD-EC886AF86879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
