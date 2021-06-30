@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GrupaZaTreniranjeSO\SacuvajNovuGrupuSO.cs" />
+    <Compile Include="SalaZaTreningSO\VratiSveSaleSO.cs" />
     <Compile Include="SystemOperationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrenerSO\LoginSO.cs" />

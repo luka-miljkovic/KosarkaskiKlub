@@ -2,6 +2,7 @@
 using Domen;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -42,6 +43,16 @@ namespace View.Communication
 
         }
 
+        internal List<SalaZaTrening> VratiSale()
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiSale
+            };
+            client.SendRequest(request);
+            return (List<SalaZaTrening>)client.GetResponseResult();
+        }
+
         internal Trener Login(string korisnickoIme, string lozinka)
         {
             Request request = new Request
@@ -57,6 +68,17 @@ namespace View.Communication
         {
             socket.Close();
             socket = null;
+        }
+
+        internal void SacuvajGrupu(GrupaZaTreniranje grupa)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.SacuvajGrupu,
+                RequestObject = grupa
+            };
+            client.SendRequest(request);
+            client.GetResponseResult();
         }
     }
 }

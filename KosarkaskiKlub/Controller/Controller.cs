@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemOperations.GrupaZaTreniranjeSO;
+using SystemOperations.SalaZaTreningSO;
 using SystemOperations.TrenerSO;
 
 namespace Controller
@@ -40,6 +42,22 @@ namespace Controller
             LoginSO so = new LoginSO();
             so.ExecuteTemplate(trener);
             return so.Result;
+        }
+        
+        //Grupa za treniranje
+
+        public object VratiSveSale(SalaZaTrening salaZaTrening)
+        {
+            VratiSveSaleSO so = new VratiSveSaleSO();
+            so.ExecuteTemplate(salaZaTrening);
+            return so.Result;
+        }
+
+        public void SacuvajGrupu(GrupaZaTreniranje grupa)
+        {
+            SacuvajNovuGrupuSO so = new SacuvajNovuGrupuSO();
+            so.ExecuteTemplate(grupa);
+            
         }
     }
 }

@@ -29,5 +29,17 @@ namespace View
         {
 
         }
+
+        public void SetPanel(UserControl userControl)
+        {
+            pnlMain.Controls.Clear();
+            userControl.Parent = pnlMain;
+            userControl.Dock = DockStyle.Fill;
+        }
+
+        private void unosNoveGrupeZaTreniranjeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCGrupaZaTreniranje(this);
+        }
     }
 }

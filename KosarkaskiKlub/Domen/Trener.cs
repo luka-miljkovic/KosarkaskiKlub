@@ -11,6 +11,7 @@ namespace Domen
     [Serializable]
     public class Trener:IEntity
     {
+        
         public int TrenerId { get; set; }
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }

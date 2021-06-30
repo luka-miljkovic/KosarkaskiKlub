@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -29,6 +30,11 @@ namespace Server
             serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9000);
             serverSocket.Bind(ep);
+            
+        }
+
+        public void Listen()
+        {
             serverSocket.Listen(10);
 
             try
@@ -43,16 +49,20 @@ namespace Server
                     thread.Start();
                 }
             }
-            catch (Exception ex)
+            catch (SocketException)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                throw;
+                System.Windows.Forms.MessageBox.Show("Kraj rada!");
             }
         }
 
         public void Stop()
         {
             serverSocket.Close();
+            foreach(ClientHandler c in clients)
+            {
+                c.Stop();
+            }
+            clients.Clear();
         }
     }
 }

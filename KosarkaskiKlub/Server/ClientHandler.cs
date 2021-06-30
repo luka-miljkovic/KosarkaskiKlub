@@ -41,6 +41,7 @@ namespace Server
                     }
                     catch (Exception ex)
                     {
+                        System.Windows.Forms.MessageBox.Show(ex.Message);
                         response = new Response();
                         response.IsSuccessful = false;
                         response.Error = ex.Message;
@@ -64,6 +65,11 @@ namespace Server
                 treneri.Remove(ulogovanTrener);
  
             }
+        }
+
+        internal void Stop()
+        {
+            clientSocket.Close();
         }
 
         private Response ProcessRequest(Request request)
@@ -93,6 +99,13 @@ namespace Server
                         }
                     }
                     response.Result = trener;
+                    break;
+                case Operation.VratiSale:
+                    List<SalaZaTrening> rez =(List<SalaZaTrening>)Controller.Controller.Instance.VratiSveSale(new SalaZaTrening());
+                    response.Result = rez;
+                    break;
+                case Operation.SacuvajGrupu:
+                    Controller.Controller.Instance.SacuvajGrupu((GrupaZaTreniranje)request.RequestObject);
                     break;
                 default:
                     break;

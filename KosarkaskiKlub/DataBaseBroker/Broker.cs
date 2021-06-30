@@ -1,6 +1,7 @@
 ﻿using Domen;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace DataBaseBroker
 
         public Broker()
         {
-            connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=KosarkaskiKlub;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["KosarkaskiKlubDataBase"].ConnectionString);
         }
 
         public void OpenConnection()
@@ -51,6 +52,30 @@ namespace DataBaseBroker
             reader.Close();
             return result;
         }
-        
+
+        public void Save(IEntity entity)
+        {
+            SqlCommand command = new SqlCommand("", connection, transaction);
+            command.CommandText = $"INSERT INTO {entity.TableName} VALUES ({entity.InsertValues})";
+            if (command.ExecuteNonQuery() != 1)
+            {
+                throw new Exception("Database error!");
+            }
+        }
+
+        public int GetNewId(IEntity entity)
+        {
+            SqlCommand command = new SqlCommand("", connection, transaction);
+            command.CommandText = $"select max({entity.IdName}) from {entity.TableName}";
+            object result = command.ExecuteScalar();
+            if(result is DBNull)
+            {
+                return 1;
+            }
+            else
+            {
+                return (int)result;
+            }
+        }
     }
 }

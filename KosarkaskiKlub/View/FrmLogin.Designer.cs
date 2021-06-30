@@ -69,7 +69,7 @@
             // 
             // btnPrijaviSe
             // 
-            this.btnPrijaviSe.Location = new System.Drawing.Point(372, 219);
+            this.btnPrijaviSe.Location = new System.Drawing.Point(372, 223);
             this.btnPrijaviSe.Name = "btnPrijaviSe";
             this.btnPrijaviSe.Size = new System.Drawing.Size(173, 30);
             this.btnPrijaviSe.TabIndex = 4;

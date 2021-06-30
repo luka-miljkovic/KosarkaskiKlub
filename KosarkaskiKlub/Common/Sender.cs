@@ -23,7 +23,7 @@ namespace Common
 
         public void Send(object message) //send object
         {
-            formatter.Serialize(stream, message);
+             formatter.Serialize(stream, message);
         }
     }
 }

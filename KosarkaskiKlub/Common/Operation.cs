@@ -8,6 +8,8 @@ namespace Common
 {
     public enum Operation
     {
-        Login
+        Login,
+        VratiSale,
+        SacuvajGrupu
     }
 }

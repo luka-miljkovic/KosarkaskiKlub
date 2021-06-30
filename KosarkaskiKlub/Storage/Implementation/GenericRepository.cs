@@ -33,7 +33,7 @@ namespace Storage.Implementation
 
         public int GetNewId(IEntity e)
         {
-            throw new NotImplementedException();
+            return broker.GetNewId(e);
         }
 
         public void OpenConnection()
@@ -48,7 +48,7 @@ namespace Storage.Implementation
 
         public void Save(IEntity entity)
         {
-            throw new NotImplementedException();
+            broker.Save(entity);
         }
     }
 }
