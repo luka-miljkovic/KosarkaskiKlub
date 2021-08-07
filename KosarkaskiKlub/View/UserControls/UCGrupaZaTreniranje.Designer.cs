@@ -49,6 +49,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSacuvaj = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDatumOd = new System.Windows.Forms.TextBox();
+            this.txtDatumDo = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTreninzi)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +69,7 @@
             // 
             // cmbUzrast
             // 
-            this.cmbUzrast.FormattingEnabled = true;
+            this.cmbUzrast.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUzrast.Items.AddRange(new object[] {
             "skola kosarke",
             "mladji pioniri",
@@ -256,10 +260,46 @@
             this.btnSacuvaj.UseVisualStyleBackColor = true;
             this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(334, 72);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 17);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Datum od:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(337, 103);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 17);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Datum do:";
+            // 
+            // txtDatumOd
+            // 
+            this.txtDatumOd.Location = new System.Drawing.Point(413, 69);
+            this.txtDatumOd.Name = "txtDatumOd";
+            this.txtDatumOd.Size = new System.Drawing.Size(146, 22);
+            this.txtDatumOd.TabIndex = 12;
+            // 
+            // txtDatumDo
+            // 
+            this.txtDatumDo.Location = new System.Drawing.Point(413, 99);
+            this.txtDatumDo.Name = "txtDatumDo";
+            this.txtDatumDo.Size = new System.Drawing.Size(146, 22);
+            this.txtDatumDo.TabIndex = 13;
+            // 
             // UCGrupaZaTreniranje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtDatumDo);
+            this.Controls.Add(this.txtDatumOd);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmbUzrast);
@@ -301,5 +341,9 @@
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ComboBox cmbSale;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtDatumOd;
+        private System.Windows.Forms.TextBox txtDatumDo;
     }
 }

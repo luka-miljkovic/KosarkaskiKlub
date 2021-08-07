@@ -17,12 +17,13 @@ namespace Domen
         public string VremeOd { get; set; }
         public string VremeDo { get; set; }
         public string DanTreninga { get; set; }
+        public DateTime DatumTreninga { get; set; }
         public SalaZaTrening SalaZaTrening { get; set; }
 
         [Browsable(false)]
         public string TableName => "Trening";
         [Browsable(false)]
-        public string InsertValues => $"{TreningId}, {GrupaZaTreniranje.GrupaId}, '{VremeOd}', '{VremeDo}', '{DanTreninga}', {SalaZaTrening.SalaZaTreningId}";
+        public string InsertValues => $"{TreningId}, {GrupaZaTreniranje.GrupaId}, '{VremeOd}', '{VremeDo}', '{DatumTreninga}', '{DanTreninga}', {SalaZaTrening.SalaZaTreningId}";
         [Browsable(false)]
         public string IdName => "TreningID";
         [Browsable(false)]

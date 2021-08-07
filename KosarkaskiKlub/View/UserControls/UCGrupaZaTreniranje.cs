@@ -21,6 +21,12 @@ namespace View.UserControls
         {
             this.grupaZaTreningController = grupaZaTreningController;
             InitializeComponent();
+            this.txtDatumOd.Text = "10.10.2020";
+            this.txtDatumDo.Text = "12.10.2020";
+            this.txtNazivGrupe.Text = "grupa1";
+            this.txtVremeOd.Text = "18:00";
+            this.txtVremeDo.Text = "20:00";
+
             //grupaZaTreningController.InitForm(this);
         }
 
@@ -41,7 +47,7 @@ namespace View.UserControls
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            grupaZaTreningController.SacuvajNovuGurpu(txtNazivGrupe, cmbUzrast, this);
+            grupaZaTreningController.SacuvajNovuGurpu(txtNazivGrupe, cmbUzrast, txtDatumOd, txtDatumDo, this);
         }
     }
 }

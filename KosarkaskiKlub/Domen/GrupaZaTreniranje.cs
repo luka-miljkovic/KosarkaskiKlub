@@ -14,6 +14,8 @@ namespace Domen
         public int GrupaId { get; set; }
         public string NazivGrupe { get; set; }
         public DateTime DatumFormiranja { get; set; }
+        public DateTime DatumOd { get; set; }
+        public DateTime DatumDo { get; set; }
         public string UzrastGrupe { get; set; }
         public Trener Trener { get; set; }
         public BindingList<Trening> Treninzi { get; set; }

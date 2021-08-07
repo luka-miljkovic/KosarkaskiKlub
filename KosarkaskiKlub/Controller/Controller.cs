@@ -18,11 +18,7 @@ namespace Controller
         public Trener Trener { get; set; }
         private static Controller instance;
 
-        private Controller()
-        {
-            Repository = new GenericRepository();
-        }
-
+        private static object _lock = new object();
 
         public static Controller Instance
         {
@@ -30,11 +26,25 @@ namespace Controller
             {
                 if(instance == null)
                 {
-                    instance = new Controller();
+                    lock (_lock)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Controller();
+                        }
+                    }
                 }
                 return instance;
             }
         }
+
+        private Controller()
+        {
+            Repository = new GenericRepository();
+        }
+
+
+        
 
         //TRENER
         public Trener Login(Trener trener)
