@@ -41,5 +41,10 @@ namespace View
         {
             mainController.OpenUCGrupaZaTreniranje(this);
         }
+
+        private void unesiNovogClanaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCClanKluba(this);
+        }
     }
 }

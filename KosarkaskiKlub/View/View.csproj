@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Communication\Communication.cs" />
     <Compile Include="Communication\CommunicationClient.cs" />
+    <Compile Include="Controller\ClanKlubaController.cs" />
     <Compile Include="Controller\GrupaZaTreningController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />

@@ -13,5 +13,10 @@ namespace View.Controller
         {
             frmMain.SetPanel(new UCGrupaZaTreniranje(new GrupaZaTreningController()));
         }
+
+        internal void OpenUCClanKluba(FrmMain frmMain)
+        {
+            frmMain.SetPanel(new UCClanKluba(new ClanKlubaController()));
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace Common
     {
         Login,
         VratiSale,
-        SacuvajGrupu
+        SacuvajGrupu,
+        VratiGrupe,
+        SacuvajClana
     }
 }

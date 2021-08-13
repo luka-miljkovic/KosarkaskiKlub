@@ -107,6 +107,12 @@ namespace Server
                 case Operation.SacuvajGrupu:
                     Controller.Controller.Instance.SacuvajGrupu((GrupaZaTreniranje)request.RequestObject);
                     break;
+                case Operation.VratiGrupe:
+                    response.Result = (List<GrupaZaTreniranje>)Controller.Controller.Instance.VratiSveGrupe(new GrupaZaTreniranje());
+                    break;
+                case Operation.SacuvajClana:
+                    Controller.Controller.Instance.SacuvajClana((ClanKluba)request.RequestObject);
+                    break;
                 default:
                     break;
             }

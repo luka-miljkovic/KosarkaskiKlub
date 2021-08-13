@@ -20,6 +20,11 @@ namespace Domen
         public Trener Trener { get; set; }
         public BindingList<Trening> Treninzi { get; set; }
 
+        public override string ToString()
+        {
+            return $"{NazivGrupe}-{UzrastGrupe}";
+        }
+
         [Browsable(false)]
         public string TableName => "GrupaZaTreniranje";
         [Browsable(false)]
@@ -33,11 +38,22 @@ namespace Domen
         [Browsable(false)]
         public string TableAlias => "";
         [Browsable(false)]
-        public object SelectValues => "";
+        public object SelectValues => "*";
         [Browsable(false)]
         public List<IEntity> GetEntities(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            List<IEntity> result = new List<IEntity>();
+            while (reader.Read())
+            {
+                result.Add(new GrupaZaTreniranje
+                {
+                    GrupaId = (int)reader[0],
+                    NazivGrupe = (string)reader[1],
+                    DatumFormiranja = Convert.ToDateTime(reader[2]),
+                    UzrastGrupe = (string)reader[3]
+                });
+            }
+            return result;
         }
     }
 }

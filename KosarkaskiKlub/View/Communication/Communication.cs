@@ -15,6 +15,9 @@ namespace View.Communication
         private static Communication instance;
 
         private Socket socket;
+
+        
+
         private CommunicationClient client;
         public static Communication Instance
         {
@@ -51,6 +54,27 @@ namespace View.Communication
             };
             client.SendRequest(request);
             return (List<SalaZaTrening>)client.GetResponseResult();
+        }
+
+        internal object VratiGrupe()
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiGrupe
+            };
+            client.SendRequest(request);
+            return (List<GrupaZaTreniranje>)client.GetResponseResult();
+        }
+
+        internal void SacuvajClana(ClanKluba clanKluba)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.SacuvajClana,
+                RequestObject = clanKluba
+            };
+            client.SendRequest(request);
+            client.GetResponseResult();
         }
 
         internal Trener Login(string korisnickoIme, string lozinka)

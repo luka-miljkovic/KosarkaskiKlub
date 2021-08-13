@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemOperations.ClanKlubaSO;
 using SystemOperations.GrupaZaTreniranjeSO;
 using SystemOperations.SalaZaTreningSO;
 using SystemOperations.TrenerSO;
@@ -68,6 +69,19 @@ namespace Controller
             SacuvajNovuGrupuSO so = new SacuvajNovuGrupuSO();
             so.ExecuteTemplate(grupa);
             
+        }
+
+        public List<GrupaZaTreniranje> VratiSveGrupe(GrupaZaTreniranje grupaZaTreniranje)
+        {
+            VratiSveGrupeSO so = new VratiSveGrupeSO();
+            so.ExecuteTemplate(grupaZaTreniranje);
+            return so.Result;
+        }
+
+        public void SacuvajClana(ClanKluba clanKluba)
+        {
+            SacuvajNovogClanaSO so = new SacuvajNovogClanaSO();
+            so.ExecuteTemplate(clanKluba);
         }
     }
 }
