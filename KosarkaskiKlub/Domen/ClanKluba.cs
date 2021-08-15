@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,24 +17,55 @@ namespace Domen
         public DateTime DatumUpisa { get; set; }
         public string NazivSkole { get; set; }
         public GrupaZaTreniranje GrupaZaTreniranje { get; set; }
-
+        [Browsable(false)]
         public string TableName => "ClanKluba";
+        [Browsable(false)]
 
         public string InsertValues => $"'{ImePrezime}', '{DatumRodjenja}', '{DatumUpisa}', '{NazivSkole}', {GrupaZaTreniranje.GrupaId}";
+        [Browsable(false)]
 
         public string IdName => "ClanKlubaId";
+        [Browsable(false)]
 
         public string JoinCondition => "";
+        [Browsable(false)]
 
         public string JoinTable => "";
+        [Browsable(false)]
 
         public string TableAlias => "";
+        [Browsable(false)]
 
-        public object SelectValues => "";
+        public object SelectValues => "*";
+        [Browsable(false)]
+
+        public string WhereCondition => $"ImePrezime='{ImePrezime}'";
+        [Browsable(false)]
+
+        public string GetUpdateValues => "";
+        [Browsable(false)]
+
+        public string GeneralCondition => "";
+        [Browsable(false)]
 
         public List<IEntity> GetEntities(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            List<IEntity> result = new List<IEntity>();
+            while (reader.Read())
+            {
+                result.Add(new ClanKluba { 
+                    ClanKlubaId = (int)reader[0],
+                    ImePrezime = (string)reader[1],
+                    DatumRodjenja = Convert.ToDateTime(reader[2]),
+                    DatumUpisa = Convert.ToDateTime(reader[3]),
+                    NazivSkole = (string)reader[4],
+                    GrupaZaTreniranje = new GrupaZaTreniranje
+                    {
+                        GrupaId = (int)reader[5]
+                    }
+                });
+            }
+            return result;
         }
 
         public override string ToString()

@@ -35,6 +35,13 @@ namespace Domen
         public string TableAlias => "";
         [Browsable(false)]
         public object SelectValues => "*";
+
+        public string WhereCondition => throw new NotImplementedException();
+
+        public string GetUpdateValues => throw new NotImplementedException();
+
+        public string GeneralCondition => throw new NotImplementedException();
+
         public List<IEntity> GetEntities(SqlDataReader reader)
         {
             List<IEntity> result = new List<IEntity>();

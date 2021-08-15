@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clanarina.cs" />
     <Compile Include="ClanKluba.cs" />
     <Compile Include="GrupaZaTreniranje.cs" />
     <Compile Include="SalaZaTrening.cs" />

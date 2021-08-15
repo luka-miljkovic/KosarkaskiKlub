@@ -8,31 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Controller;
+using View.UserControls;
 
 namespace View
 {
     public partial class FrmMain : Form
     {
-        private MainController mainController;
+        MainController mainController = new MainController();
 
         public FrmMain()
         {
             InitializeComponent();
         }
-        public FrmMain(MainController mainController)
+        public FrmMain(Controller.MainController mainController)
         {
             InitializeComponent();
             this.mainController = mainController;
         }
 
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void SetPanel(UserControl userControl)
         {
             pnlMain.Controls.Clear();
+            pnlMain.BackgroundImage = null;
             userControl.Parent = pnlMain;
             userControl.Dock = DockStyle.Fill;
         }
@@ -42,9 +39,14 @@ namespace View
             mainController.OpenUCGrupaZaTreniranje(this);
         }
 
-        private void unesiNovogClanaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void upisNovogClanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mainController.OpenUCClanKluba(this);
+        }
+
+        private void evidencijaClanarineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCEvidencijaClanarine(this);
         }
     }
 }

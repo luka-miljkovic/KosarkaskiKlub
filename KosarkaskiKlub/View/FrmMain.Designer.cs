@@ -30,10 +30,11 @@
         {
             this.pnlMain = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.grupaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grupaZaTreniranjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unosNoveGrupeZaTreniranjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clanKlubaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unesiNovogClanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upisNovogClanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.evidencijaClanarineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -41,30 +42,30 @@
             // pnlMain
             // 
             this.pnlMain.Controls.Add(this.menuStrip1);
-            this.pnlMain.Location = new System.Drawing.Point(2, 2);
+            this.pnlMain.Location = new System.Drawing.Point(4, 3);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(797, 681);
+            this.pnlMain.Size = new System.Drawing.Size(789, 532);
             this.pnlMain.TabIndex = 0;
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.grupaToolStripMenuItem,
+            this.grupaZaTreniranjeToolStripMenuItem,
             this.clanKlubaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(797, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(789, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // grupaToolStripMenuItem
+            // grupaZaTreniranjeToolStripMenuItem
             // 
-            this.grupaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.grupaZaTreniranjeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.unosNoveGrupeZaTreniranjeToolStripMenuItem});
-            this.grupaToolStripMenuItem.Name = "grupaToolStripMenuItem";
-            this.grupaToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
-            this.grupaToolStripMenuItem.Text = "Grupa za treniranje";
+            this.grupaZaTreniranjeToolStripMenuItem.Name = "grupaZaTreniranjeToolStripMenuItem";
+            this.grupaZaTreniranjeToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
+            this.grupaZaTreniranjeToolStripMenuItem.Text = "Grupa za treniranje";
             // 
             // unosNoveGrupeZaTreniranjeToolStripMenuItem
             // 
@@ -76,27 +77,35 @@
             // clanKlubaToolStripMenuItem
             // 
             this.clanKlubaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.unesiNovogClanaToolStripMenuItem});
+            this.upisNovogClanaToolStripMenuItem,
+            this.evidencijaClanarineToolStripMenuItem});
             this.clanKlubaToolStripMenuItem.Name = "clanKlubaToolStripMenuItem";
             this.clanKlubaToolStripMenuItem.Size = new System.Drawing.Size(92, 24);
             this.clanKlubaToolStripMenuItem.Text = "Clan kluba";
             // 
-            // unesiNovogClanaToolStripMenuItem
+            // upisNovogClanaToolStripMenuItem
             // 
-            this.unesiNovogClanaToolStripMenuItem.Name = "unesiNovogClanaToolStripMenuItem";
-            this.unesiNovogClanaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.unesiNovogClanaToolStripMenuItem.Text = "Unesi novog clana";
-            this.unesiNovogClanaToolStripMenuItem.Click += new System.EventHandler(this.unesiNovogClanaToolStripMenuItem_Click);
+            this.upisNovogClanaToolStripMenuItem.Name = "upisNovogClanaToolStripMenuItem";
+            this.upisNovogClanaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.upisNovogClanaToolStripMenuItem.Text = "Upis novog clana";
+            this.upisNovogClanaToolStripMenuItem.Click += new System.EventHandler(this.upisNovogClanaToolStripMenuItem_Click);
+            // 
+            // evidencijaClanarineToolStripMenuItem
+            // 
+            this.evidencijaClanarineToolStripMenuItem.Name = "evidencijaClanarineToolStripMenuItem";
+            this.evidencijaClanarineToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.evidencijaClanarineToolStripMenuItem.Text = "Evidencija clanarine";
+            this.evidencijaClanarineToolStripMenuItem.Click += new System.EventHandler(this.evidencijaClanarineToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 680);
+            this.ClientSize = new System.Drawing.Size(800, 543);
             this.Controls.Add(this.pnlMain);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "FrmMain";
-            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -109,9 +118,10 @@
 
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem grupaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grupaZaTreniranjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unosNoveGrupeZaTreniranjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clanKlubaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem unesiNovogClanaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upisNovogClanaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem evidencijaClanarineToolStripMenuItem;
     }
 }

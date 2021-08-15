@@ -36,6 +36,11 @@ namespace Storage.Implementation
             return broker.GetNewId(e);
         }
 
+        public List<IEntity> GetSpecific(IEntity entity)
+        {
+            return broker.GetSpecific(entity);
+        }
+
         public void OpenConnection()
         {
             broker.OpenConnection();

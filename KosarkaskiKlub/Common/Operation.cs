@@ -12,6 +12,7 @@ namespace Common
         VratiSale,
         SacuvajGrupu,
         VratiGrupe,
-        SacuvajClana
+        SacuvajClana,
+        PretraziClana
     }
 }

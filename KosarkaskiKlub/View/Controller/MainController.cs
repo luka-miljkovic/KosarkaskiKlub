@@ -18,5 +18,10 @@ namespace View.Controller
         {
             frmMain.SetPanel(new UCClanKluba(new ClanKlubaController()));
         }
+
+        internal void OpenUCEvidencijaClanarine(FrmMain frmMain)
+        {
+            frmMain.SetPanel(new UCEvidencijaClanarine(new EvidencijaClanarineController()));
+        }
     }
 }

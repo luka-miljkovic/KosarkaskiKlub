@@ -50,6 +50,7 @@
     <Compile Include="Communication\Communication.cs" />
     <Compile Include="Communication\CommunicationClient.cs" />
     <Compile Include="Controller\ClanKlubaController.cs" />
+    <Compile Include="Controller\EvidencijaClanarineController.cs" />
     <Compile Include="Controller\GrupaZaTreningController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
@@ -78,6 +79,12 @@
     <Compile Include="UserControls\UCClanKluba.Designer.cs">
       <DependentUpon>UCClanKluba.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCEvidencijaClanarine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCEvidencijaClanarine.Designer.cs">
+      <DependentUpon>UCEvidencijaClanarine.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCGrupaZaTreniranje.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -101,6 +108,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UCClanKluba.resx">
       <DependentUpon>UCClanKluba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCEvidencijaClanarine.resx">
+      <DependentUpon>UCEvidencijaClanarine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCGrupaZaTreniranje.resx">
       <DependentUpon>UCGrupaZaTreniranje.cs</DependentUpon>

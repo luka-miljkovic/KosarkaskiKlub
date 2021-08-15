@@ -113,6 +113,9 @@ namespace Server
                 case Operation.SacuvajClana:
                     Controller.Controller.Instance.SacuvajClana((ClanKluba)request.RequestObject);
                     break;
+                case Operation.PretraziClana:
+                    response.Result = (List<ClanKluba>)Controller.Controller.Instance.PretraziClana((string)request.RequestObject);
+                    break;
                 default:
                     break;
             }

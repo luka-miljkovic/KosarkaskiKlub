@@ -16,3 +16,4 @@ C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad
 C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\View\bin\Debug\Domen.pdb
 C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\View\obj\Debug\View.UserControls.UCGrupaZaTreniranje.resources
 C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\View\obj\Debug\View.UserControls.UCClanKluba.resources
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\View\obj\Debug\View.UserControls.UCEvidencijaClanarine.resources

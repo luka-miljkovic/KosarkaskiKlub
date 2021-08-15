@@ -11,6 +11,7 @@ namespace Storage
     {
         void Save(IEntity entity);
         List<IEntity> GetAll(IEntity e);
+        List<IEntity> GetSpecific(IEntity entity);
         int GetNewId(IEntity e);
         void OpenConnection();
         void CloseConnection();

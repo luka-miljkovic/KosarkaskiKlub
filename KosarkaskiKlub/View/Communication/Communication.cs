@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using View.UserControls;
 
 namespace View.Communication
 {
@@ -30,6 +31,18 @@ namespace View.Communication
                 return instance;
             }
         }
+
+        internal List<ClanKluba> PretreziClana(string imePrezime)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PretraziClana,
+                RequestObject = imePrezime
+            };
+            client.SendRequest(request);
+            return (List<ClanKluba>)client.GetResponseResult();
+        }
+
         private Communication()
         {
 

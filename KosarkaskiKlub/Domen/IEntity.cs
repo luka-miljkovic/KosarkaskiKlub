@@ -16,6 +16,9 @@ namespace Domen
         string JoinTable { get; }
         string TableAlias { get; }
         object SelectValues { get; }
+        string WhereCondition { get; }
+        string GetUpdateValues { get; }
+        string GeneralCondition { get; }
         List<IEntity> GetEntities(SqlDataReader reader);
     }
 }

@@ -83,5 +83,12 @@ namespace Controller
             SacuvajNovogClanaSO so = new SacuvajNovogClanaSO();
             so.ExecuteTemplate(clanKluba);
         }
+
+        public List<ClanKluba> PretraziClana(string requestObject)
+        {
+            PretraziClanaSO so = new PretraziClanaSO();
+            so.ExecuteTemplate(new ClanKluba { ImePrezime = requestObject });
+            return so.Result;
+        }
     }
 }
