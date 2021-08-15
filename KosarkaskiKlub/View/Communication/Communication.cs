@@ -69,6 +69,16 @@ namespace View.Communication
             return (List<SalaZaTrening>)client.GetResponseResult();
         }
 
+        internal void EvidentirajPlacanjeClanarine(Clanarina clanarina)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.EvidentirajPlacanjeClanarine,
+                RequestObject = clanarina
+            };
+            client.SendRequest(request);
+        }
+
         internal object VratiGrupe()
         {
             Request request = new Request

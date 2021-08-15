@@ -90,5 +90,11 @@ namespace Controller
             so.ExecuteTemplate(new ClanKluba { ImePrezime = requestObject });
             return so.Result;
         }
+
+        public void EvidentirajPlacanjeClanarine(Clanarina clanarina)
+        {
+            EvidentirajPlacanjeClanarineSO so = new EvidentirajPlacanjeClanarineSO();
+            so.ExecuteTemplate(clanarina);
+        }
     }
 }

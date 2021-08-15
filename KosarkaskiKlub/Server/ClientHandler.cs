@@ -116,6 +116,9 @@ namespace Server
                 case Operation.PretraziClana:
                     response.Result = (List<ClanKluba>)Controller.Controller.Instance.PretraziClana((string)request.RequestObject);
                     break;
+                case Operation.EvidentirajPlacanjeClanarine:
+                    Controller.Controller.Instance.EvidentirajPlacanjeClanarine((Clanarina)request.RequestObject);
+                    break;
                 default:
                     break;
             }

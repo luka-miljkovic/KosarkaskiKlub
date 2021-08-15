@@ -21,7 +21,7 @@ namespace Domen
 
         public string InsertValues => $"{ClanarinaId}, {ClanKluba.ClanKlubaId}, {Mesec}, {Godina}, '{DatumIsplate}', {Iznos}";
 
-        public string IdName => "ClanarinaId";
+        public string IdName => "ClanarinaID";
 
         public string JoinCondition => "";
 

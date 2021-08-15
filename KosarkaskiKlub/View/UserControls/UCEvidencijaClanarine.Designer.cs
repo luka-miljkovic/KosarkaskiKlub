@@ -143,6 +143,7 @@
             this.btnSacuvajUplatu.TabIndex = 11;
             this.btnSacuvajUplatu.Text = "Sacuvaj uplatu";
             this.btnSacuvajUplatu.UseVisualStyleBackColor = true;
+            this.btnSacuvajUplatu.Click += new System.EventHandler(this.btnSacuvajUplatu_Click);
             // 
             // label6
             // 

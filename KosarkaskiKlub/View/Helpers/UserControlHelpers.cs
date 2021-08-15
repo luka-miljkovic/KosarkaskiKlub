@@ -40,6 +40,20 @@ namespace View.Helpers
             }
         }
 
+        internal static bool DoubleValidation(TextBox txtIznos)
+        {
+            if(!double.TryParse(txtIznos.Text, out double _))
+            {
+                txtIznos.BackColor = Color.LightCoral;
+                return false;
+            }
+            else
+            {
+                txtIznos.BackColor = Color.White;
+                return true;
+            }
+        }
+
         public static bool IntValidation(TextBox txt)
         {
             if(!int.TryParse(txt.Text, out int _))

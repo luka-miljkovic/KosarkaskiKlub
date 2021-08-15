@@ -13,6 +13,7 @@ namespace Common
         SacuvajGrupu,
         VratiGrupe,
         SacuvajClana,
-        PretraziClana
+        PretraziClana,
+        EvidentirajPlacanjeClanarine
     }
 }
