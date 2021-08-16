@@ -27,13 +27,13 @@ namespace Domen
         public string IdName => "ClanKlubaId";
         [Browsable(false)]
 
-        public string JoinCondition => "";
+        public string JoinCondition => "ON (CK.GrupaZaTreniranjeID = GT.GrupaID)";
         [Browsable(false)]
 
-        public string JoinTable => "";
+        public string JoinTable => "JOIN GrupaZaTreniranje GT";
         [Browsable(false)]
 
-        public string TableAlias => "";
+        public string TableAlias => "CK";
         [Browsable(false)]
 
         public object SelectValues => "*";
@@ -44,8 +44,8 @@ namespace Domen
 
         public string GetUpdateValues => "";
         [Browsable(false)]
-
-        public string GeneralCondition => "";
+        public string GCondition { get; set; }
+        public string GeneralCondition => $"{GCondition}";
         [Browsable(false)]
 
         public List<IEntity> GetEntities(SqlDataReader reader)

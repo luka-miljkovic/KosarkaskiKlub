@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SystemOperations.ClanKlubaSO;
 using SystemOperations.GrupaZaTreniranjeSO;
+using SystemOperations.PrisustvoSO;
 using SystemOperations.SalaZaTreningSO;
 using SystemOperations.TrenerSO;
 
@@ -87,7 +88,7 @@ namespace Controller
         public List<ClanKluba> PretraziClana(string requestObject)
         {
             PretraziClanaSO so = new PretraziClanaSO();
-            so.ExecuteTemplate(new ClanKluba { ImePrezime = requestObject });
+            so.ExecuteTemplate(new ClanKluba { GCondition = requestObject });
             return so.Result;
         }
 
@@ -95,6 +96,22 @@ namespace Controller
         {
             EvidentirajPlacanjeClanarineSO so = new EvidentirajPlacanjeClanarineSO();
             so.ExecuteTemplate(clanarina);
+        }
+
+        public List<Trening> PretraziTreninge(string requestObject)
+        {
+            PretraziTreningeSO so = new PretraziTreningeSO();
+            so.ExecuteTemplate(new Trening { DatumTreninga = Convert.ToDateTime(requestObject), GCondition = $"DatumTreninga='{Convert.ToDateTime(requestObject)}'" });
+            return so.Result;
+        }
+
+        public void SacuvajPrisustva(List<Prisustvo> listaPrisustva)
+        {
+            SacuvajPrisustvaSO so = new SacuvajPrisustvaSO
+            {
+                listaPrisustva = listaPrisustva
+            };
+            so.ExecuteTemplate(new Prisustvo());
         }
     }
 }

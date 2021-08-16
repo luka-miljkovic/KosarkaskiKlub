@@ -2,6 +2,7 @@
 using Domen;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
 using System.Net.Sockets;
@@ -32,6 +33,17 @@ namespace View.Communication
             }
         }
 
+        internal List<Trening> PretraziTreninge(string datum)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PretraziTreninge,
+                RequestObject = datum
+            };
+            client.SendRequest(request);
+            return (List<Trening>)client.GetResponseResult();
+        }
+
         internal List<ClanKluba> PretreziClana(string imePrezime)
         {
             Request request = new Request
@@ -57,6 +69,16 @@ namespace View.Communication
             socket.Connect("127.0.0.1", 9000);
             client = new CommunicationClient(socket);
 
+        }
+
+        internal void SacuvajPrisustva(BindingList<Prisustvo> prisustva)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.SacuvajPrisustva,
+                RequestObject = prisustva
+            };
+            client.SendRequest(request);
         }
 
         internal List<SalaZaTrening> VratiSale()

@@ -22,7 +22,7 @@ namespace Domen
 
         public override string ToString()
         {
-            return $"{NazivGrupe}-{UzrastGrupe}";
+            return $"{GrupaId}) {NazivGrupe}-{UzrastGrupe}";
         }
 
         [Browsable(false)]
@@ -40,11 +40,11 @@ namespace Domen
         [Browsable(false)]
         public object SelectValues => "*";
 
-        public string WhereCondition => throw new NotImplementedException();
+        public string WhereCondition => $"GrupaID={GrupaId}";
 
-        public string GetUpdateValues => throw new NotImplementedException();
-
-        public string GeneralCondition => throw new NotImplementedException();
+        public string GetUpdateValues => "";
+        public string GCondition { get; set; }
+        public string GeneralCondition => $"{GCondition}";
 
         [Browsable(false)]
         public List<IEntity> GetEntities(SqlDataReader reader)

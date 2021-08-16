@@ -14,6 +14,9 @@ namespace Common
         VratiGrupe,
         SacuvajClana,
         PretraziClana,
-        EvidentirajPlacanjeClanarine
+        EvidentirajPlacanjeClanarine,
+        PretraziTreninge,
+        PrikaziClana,
+        SacuvajPrisustva
     }
 }

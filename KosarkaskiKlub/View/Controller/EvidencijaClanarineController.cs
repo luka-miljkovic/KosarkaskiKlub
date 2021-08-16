@@ -19,7 +19,7 @@ namespace View.Controller
                 return;
             }
 
-            dgvClanKluba.DataSource = Communication.Communication.Instance.PretreziClana(txtImePrezime.Text);
+            dgvClanKluba.DataSource = Communication.Communication.Instance.PretreziClana($"ImePrezime = '{txtImePrezime.Text}'");
         }
 
         internal void SacuvajUplatu(TextBox txtDatumUplate, TextBox txtMesec, TextBox txtGodina, TextBox txtIznos, DataGridView dgvClanKluba)

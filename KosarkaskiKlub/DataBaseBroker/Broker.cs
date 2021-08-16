@@ -82,7 +82,7 @@ namespace DataBaseBroker
         {
             List<IEntity> result;
             SqlCommand command = new SqlCommand("", connection, transaction);
-            command.CommandText = $"select {entity.SelectValues} from {entity.TableName} {entity.TableAlias} {entity.JoinTable} {entity.JoinCondition} where {entity.WhereCondition}";
+            command.CommandText = $"select {entity.SelectValues} from {entity.TableName} {entity.TableAlias} {entity.JoinTable} {entity.JoinCondition} where {entity.GeneralCondition}";
             SqlDataReader reader = command.ExecuteReader();
             result = entity.GetEntities(reader);
             reader.Close();

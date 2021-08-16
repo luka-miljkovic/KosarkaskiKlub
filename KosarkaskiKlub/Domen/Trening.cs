@@ -11,7 +11,6 @@ namespace Domen
     [Serializable]
     public class Trening : IEntity
     {
-        [Browsable(false)]
         public GrupaZaTreniranje GrupaZaTreniranje { get; set; }
         public int TreningId { get; set; }
         public string VremeOd { get; set; }
@@ -33,18 +32,41 @@ namespace Domen
         [Browsable(false)]
         public string TableAlias => "";
         [Browsable(false)]
-        public object SelectValues => "";
-
-        public string WhereCondition => throw new NotImplementedException();
-
-        public string GetUpdateValues => throw new NotImplementedException();
-
-        public string GeneralCondition => throw new NotImplementedException();
+        public object SelectValues => "*";
+        [Browsable(false)]
+        public string WhereCondition => $"DatumTreninga='{DatumTreninga}'";
+        [Browsable(false)]
+        public string GetUpdateValues => "";
+        [Browsable(false)]
+        public string GCondition { get; set; }
+        [Browsable(false)]
+        public string GeneralCondition => $"{GCondition}";
 
         [Browsable(false)]
         public List<IEntity> GetEntities(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            List<IEntity> result = new List<IEntity>();
+            while (reader.Read())
+            {
+                result.Add(new Trening
+                {
+                    TreningId = (int)reader[0],
+                    GrupaZaTreniranje = new GrupaZaTreniranje
+                    {
+                        GrupaId = (int)reader[1]
+                    },
+                    VremeOd = (string)reader[2],
+                    VremeDo = (string)reader[3],
+                    DatumTreninga = Convert.ToDateTime(reader[4]),
+                    DanTreninga = (string)reader[5],
+                    SalaZaTrening = new SalaZaTrening
+                    {
+                        SalaZaTreningId = (int)reader[6]
+                    }
+                });
+            }
+            return result;
         }
+
     }
 }

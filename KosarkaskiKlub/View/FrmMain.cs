@@ -48,5 +48,10 @@ namespace View
         {
             mainController.OpenUCEvidencijaClanarine(this);
         }
+
+        private void unesiPrisustvaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCUnosPrisustva(this);
+        }
     }
 }

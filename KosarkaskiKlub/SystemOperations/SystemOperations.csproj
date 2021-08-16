@@ -44,8 +44,10 @@
     <Compile Include="ClanKlubaSO\EvidentirajPlacanjeClanarineSO.cs" />
     <Compile Include="ClanKlubaSO\PretraziClanaSO.cs" />
     <Compile Include="ClanKlubaSO\SacuvajNovogClanaSO.cs" />
+    <Compile Include="GrupaZaTreniranjeSO\PretraziTreningeSO.cs" />
     <Compile Include="GrupaZaTreniranjeSO\SacuvajNovuGrupuSO.cs" />
     <Compile Include="GrupaZaTreniranjeSO\VratiSveGrupeSO.cs" />
+    <Compile Include="PrisustvoSO\SacuvajPrisustvaSO.cs" />
     <Compile Include="SalaZaTreningSO\VratiSveSaleSO.cs" />
     <Compile Include="SystemOperationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

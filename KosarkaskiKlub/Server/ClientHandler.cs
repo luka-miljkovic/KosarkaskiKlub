@@ -119,6 +119,12 @@ namespace Server
                 case Operation.EvidentirajPlacanjeClanarine:
                     Controller.Controller.Instance.EvidentirajPlacanjeClanarine((Clanarina)request.RequestObject);
                     break;
+                case Operation.PretraziTreninge:
+                    response.Result = (List<Trening>)Controller.Controller.Instance.PretraziTreninge((string)request.RequestObject);
+                    break;
+                case Operation.SacuvajPrisustva:
+                    Controller.Controller.Instance.SacuvajPrisustva(new List<Prisustvo>((BindingList<Prisustvo>)request.RequestObject));
+                    break;
                 default:
                     break;
             }

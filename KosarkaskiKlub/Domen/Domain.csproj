@@ -44,6 +44,7 @@
     <Compile Include="Clanarina.cs" />
     <Compile Include="ClanKluba.cs" />
     <Compile Include="GrupaZaTreniranje.cs" />
+    <Compile Include="Prisustvo.cs" />
     <Compile Include="SalaZaTrening.cs" />
     <Compile Include="Trener.cs" />
     <Compile Include="IEntity.cs" />

@@ -54,6 +54,7 @@
     <Compile Include="Controller\GrupaZaTreningController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Controller\UnosPrisustvaController.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Exceptions\SystemNotFoundException.cs" />
     <Compile Include="Exceptions\SystemOperationException.cs" />
@@ -91,6 +92,12 @@
     <Compile Include="UserControls\UCGrupaZaTreniranje.Designer.cs">
       <DependentUpon>UCGrupaZaTreniranje.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCUnosPrisustva.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCUnosPrisustva.Designer.cs">
+      <DependentUpon>UCUnosPrisustva.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCGrupaZaTreniranje.resx">
       <DependentUpon>UCGrupaZaTreniranje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCUnosPrisustva.resx">
+      <DependentUpon>UCUnosPrisustva.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

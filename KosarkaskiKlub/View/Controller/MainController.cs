@@ -23,5 +23,10 @@ namespace View.Controller
         {
             frmMain.SetPanel(new UCEvidencijaClanarine(new EvidencijaClanarineController()));
         }
+
+        internal void OpenUCUnosPrisustva(FrmMain frmMain)
+        {
+            frmMain.SetPanel(new UCUnosPrisustva(new UnosPrisustvaController()));
+        }
     }
 }
