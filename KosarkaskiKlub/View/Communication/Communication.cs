@@ -81,6 +81,16 @@ namespace View.Communication
             client.SendRequest(request);
         }
 
+        internal void SacuvajIzmeneClana(ClanKluba clanKluba)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.SacuvajIzmeneClana,
+                RequestObject = clanKluba
+            };
+            client.SendRequest(request);
+        }
+
         internal List<SalaZaTrening> VratiSale()
         {
             Request request = new Request

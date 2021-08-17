@@ -125,6 +125,9 @@ namespace Server
                 case Operation.SacuvajPrisustva:
                     Controller.Controller.Instance.SacuvajPrisustva(new List<Prisustvo>((BindingList<Prisustvo>)request.RequestObject));
                     break;
+                case Operation.SacuvajIzmeneClana:
+                    Controller.Controller.Instance.SacuvajIzmeneClana((ClanKluba)request.RequestObject);
+                    break;
                 default:
                     break;
             }

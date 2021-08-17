@@ -55,5 +55,10 @@ namespace Storage.Implementation
         {
             broker.Save(entity);
         }
+
+        public void Update(IEntity entity)
+        {
+            broker.Update(entity);
+        }
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ClanKlubaSO\EvidentirajPlacanjeClanarineSO.cs" />
     <Compile Include="ClanKlubaSO\PretraziClanaSO.cs" />
+    <Compile Include="ClanKlubaSO\SacuvajIzmeneClanaSO.cs" />
     <Compile Include="ClanKlubaSO\SacuvajNovogClanaSO.cs" />
     <Compile Include="GrupaZaTreniranjeSO\PretraziTreningeSO.cs" />
     <Compile Include="GrupaZaTreniranjeSO\SacuvajNovuGrupuSO.cs" />

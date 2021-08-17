@@ -53,5 +53,10 @@ namespace View
         {
             mainController.OpenUCUnosPrisustva(this);
         }
+
+        private void izmenaČlanaKlubaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCIzmenaClanaKluba(this);
+        }
     }
 }

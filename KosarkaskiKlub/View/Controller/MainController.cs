@@ -28,5 +28,10 @@ namespace View.Controller
         {
             frmMain.SetPanel(new UCUnosPrisustva(new UnosPrisustvaController()));
         }
+
+        internal void OpenUCIzmenaClanaKluba(FrmMain frmMain)
+        {
+            frmMain.SetPanel(new UCIzmenaClanaKluba(new IzmenaClanaKlubaController()));
+        }
     }
 }

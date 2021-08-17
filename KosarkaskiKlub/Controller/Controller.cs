@@ -113,5 +113,11 @@ namespace Controller
             };
             so.ExecuteTemplate(new Prisustvo());
         }
+
+        public void SacuvajIzmeneClana(ClanKluba requestObject)
+        {
+            SacuvajIzmeneClanaSO so = new SacuvajIzmeneClanaSO();
+            so.ExecuteTemplate(requestObject);
+        }
     }
 }

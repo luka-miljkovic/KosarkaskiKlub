@@ -37,6 +37,7 @@
             this.evidencijaClanarineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prisustvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unesiPrisustvaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izmenaČlanaKlubaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +82,8 @@
             // 
             this.clanKlubaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.upisNovogClanaToolStripMenuItem,
-            this.evidencijaClanarineToolStripMenuItem});
+            this.evidencijaClanarineToolStripMenuItem,
+            this.izmenaČlanaKlubaToolStripMenuItem});
             this.clanKlubaToolStripMenuItem.Name = "clanKlubaToolStripMenuItem";
             this.clanKlubaToolStripMenuItem.Size = new System.Drawing.Size(92, 24);
             this.clanKlubaToolStripMenuItem.Text = "Clan kluba";
@@ -115,6 +117,13 @@
             this.unesiPrisustvaToolStripMenuItem.Text = "Unesi prisustva";
             this.unesiPrisustvaToolStripMenuItem.Click += new System.EventHandler(this.unesiPrisustvaToolStripMenuItem_Click);
             // 
+            // izmenaČlanaKlubaToolStripMenuItem
+            // 
+            this.izmenaČlanaKlubaToolStripMenuItem.Name = "izmenaČlanaKlubaToolStripMenuItem";
+            this.izmenaČlanaKlubaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.izmenaČlanaKlubaToolStripMenuItem.Text = "Izmena člana kluba";
+            this.izmenaČlanaKlubaToolStripMenuItem.Click += new System.EventHandler(this.izmenaČlanaKlubaToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -143,5 +152,6 @@
         private System.Windows.Forms.ToolStripMenuItem evidencijaClanarineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prisustvoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unesiPrisustvaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izmenaČlanaKlubaToolStripMenuItem;
     }
 }

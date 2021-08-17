@@ -89,5 +89,15 @@ namespace DataBaseBroker
             return result;
 
         }
+
+        public void Update(IEntity entity)
+        {
+            SqlCommand command = new SqlCommand("", connection, transaction);
+            command.CommandText = $"UPDATE {entity.TableName} SET {entity.GetUpdateValues} WHERE {entity.WhereCondition}";
+            if (command.ExecuteNonQuery() != 1)
+            {
+                throw new Exception("Database error!");
+            }
+        }
     }
 }

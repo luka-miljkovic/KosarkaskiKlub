@@ -39,10 +39,10 @@ namespace Domen
         public object SelectValues => "*";
         [Browsable(false)]
 
-        public string WhereCondition => $"ImePrezime='{ImePrezime}'";
+        public string WhereCondition => $"ClanKlubaID={ClanKlubaId}";
         [Browsable(false)]
 
-        public string GetUpdateValues => "";
+        public string GetUpdateValues => $"ImePrezime='{ImePrezime}', DatumRodjenja='{DatumRodjenja}', DatumUpisa='{DatumUpisa}', NazivSkole='{NazivSkole}', GrupaZaTreniranjeID={GrupaZaTreniranje.GrupaId}";
         [Browsable(false)]
         public string GCondition { get; set; }
         public string GeneralCondition => $"{GCondition}";

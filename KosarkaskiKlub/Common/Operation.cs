@@ -17,6 +17,7 @@ namespace Common
         EvidentirajPlacanjeClanarine,
         PretraziTreninge,
         PrikaziClana,
-        SacuvajPrisustva
+        SacuvajPrisustva,
+        SacuvajIzmeneClana
     }
 }
