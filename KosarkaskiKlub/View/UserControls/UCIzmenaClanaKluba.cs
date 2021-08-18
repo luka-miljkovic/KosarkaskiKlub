@@ -36,6 +36,7 @@ namespace View.UserControls
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             izmenaClanaKlubaController.SacuvajIzmene(txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
+            MessageBox.Show("Izmene su uspesno sacuvane");
         }
     }
 }

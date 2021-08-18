@@ -128,6 +128,13 @@ namespace Server
                 case Operation.SacuvajIzmeneClana:
                     Controller.Controller.Instance.SacuvajIzmeneClana((ClanKluba)request.RequestObject);
                     break;
+                case Operation.UcitajTrening:
+                    response.Result = (Trening)Controller.Controller.Instance.UcitajTrening((Trening)request.RequestObject);
+                    break;
+                case Operation.SacuvajIzmeneTreninga:
+                    Controller.Controller.Instance.SacuvajIzmeneTreninga((Trening)request.RequestObject);
+                    break;
+
                 default:
                     break;
             }

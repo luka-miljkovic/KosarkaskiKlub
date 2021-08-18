@@ -44,6 +44,17 @@ namespace View.Communication
             return (List<Trening>)client.GetResponseResult();
         }
 
+        internal  Trening UcitajTrening(Trening t)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.UcitajTrening,
+                RequestObject = t
+            };
+            client.SendRequest(request);
+            return (Trening)client.GetResponseResult();
+        }
+
         internal List<ClanKluba> PretreziClana(string imePrezime)
         {
             Request request = new Request
@@ -107,6 +118,16 @@ namespace View.Communication
             {
                 Operation = Operation.EvidentirajPlacanjeClanarine,
                 RequestObject = clanarina
+            };
+            client.SendRequest(request);
+        }
+
+        internal void SacuvajIZmeneTreninga(Trening trening)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.SacuvajIzmeneTreninga,
+                RequestObject = trening
             };
             client.SendRequest(request);
         }

@@ -18,6 +18,8 @@ namespace Common
         PretraziTreninge,
         PrikaziClana,
         SacuvajPrisustva,
-        SacuvajIzmeneClana
+        SacuvajIzmeneClana,
+        UcitajTrening,
+        SacuvajIzmeneTreninga
     }
 }

@@ -58,5 +58,10 @@ namespace View
         {
             mainController.OpenUCIzmenaClanaKluba(this);
         }
+
+        private void izmenaTreningaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCIzmenaTreninga(this);
+        }
     }
 }

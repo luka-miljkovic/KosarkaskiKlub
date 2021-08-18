@@ -34,9 +34,9 @@ namespace Domen
         [Browsable(false)]
         public object SelectValues => "*";
         [Browsable(false)]
-        public string WhereCondition => $"DatumTreninga='{DatumTreninga}'";
+        public string WhereCondition => $"TreningID={TreningId} and GrupaZaTreniranjeID={GrupaZaTreniranje.GrupaId}";
         [Browsable(false)]
-        public string GetUpdateValues => "";
+        public string GetUpdateValues => $"VremeOd='{VremeOd}', VremeDo='{VremeDo}', DatumTreninga='{DatumTreninga}', DanTreninga='{DanTreninga}', SalaZaTreningID={SalaZaTrening.SalaZaTreningId}";
         [Browsable(false)]
         public string GCondition { get; set; }
         [Browsable(false)]

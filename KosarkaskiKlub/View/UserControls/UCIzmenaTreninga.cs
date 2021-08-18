@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using View.Controller;
+
+namespace View.UserControls
+{
+    public partial class UCIzmenaTreninga : UserControl
+    {
+        IzmenaTreningaController izmenaTreningaController;
+        public UCIzmenaTreninga(Controller.IzmenaTreningaController izmenaTreningaController)
+        {
+            InitializeComponent();
+            this.izmenaTreningaController = izmenaTreningaController;
+            this.dtpDatumTreningaIzbor.Value = Convert.ToDateTime("10.10.2020");
+        }
+
+        private void btnPretrazi_Click(object sender, EventArgs e)
+        {
+            izmenaTreningaController.Pretrazitreninge(dtpDatumTreningaIzbor, dgvTreninzi);
+        }
+
+        private void dgvTreninzi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            izmenaTreningaController.UcitajTrening(dgvTreninzi, cmbGrupe, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale);
+        }
+
+        private void UCIzmenaTreninga_Load(object sender, EventArgs e)
+        {
+            izmenaTreningaController.UcitajSale(cmbSale);
+            izmenaTreningaController.UcitajGrupe(cmbGrupe);
+        }
+
+        private void dtpDatumTreninga_ValueChanged(object sender, EventArgs e)
+        {
+            izmenaTreningaController.PostaviDanTreninga(dtpDatumTreninga, txtDanTreninga);
+        }
+
+        private void btnSacuvajIzmene_Click(object sender, EventArgs e)
+        {
+            izmenaTreningaController.SacuvajIzmene(cmbGrupe, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale);
+
+        }
+    }
+}

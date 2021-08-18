@@ -19,3 +19,4 @@ C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad
 C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\View\obj\Debug\View.UserControls.UCEvidencijaClanarine.resources
 C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\View\obj\Debug\View.UserControls.UCUnosPrisustva.resources
 C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\View\obj\Debug\View.UserControls.UCIzmenaClanaKluba.resources
+C:\Users\Luka\Documents\Пројектовање софтвера\Seminarski rad\KosarkaskiKlub\KosarkaskiKlub\View\obj\Debug\View.UserControls.UCIzmenaTreninga.resources

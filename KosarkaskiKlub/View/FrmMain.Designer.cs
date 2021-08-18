@@ -38,6 +38,7 @@
             this.prisustvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unesiPrisustvaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izmenaČlanaKlubaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izmenaTreningaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,16 +60,17 @@
             this.prisustvoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(900, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(900, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // grupaZaTreniranjeToolStripMenuItem
             // 
             this.grupaZaTreniranjeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.unosNoveGrupeZaTreniranjeToolStripMenuItem});
+            this.unosNoveGrupeZaTreniranjeToolStripMenuItem,
+            this.izmenaTreningaToolStripMenuItem});
             this.grupaZaTreniranjeToolStripMenuItem.Name = "grupaZaTreniranjeToolStripMenuItem";
-            this.grupaZaTreniranjeToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
+            this.grupaZaTreniranjeToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
             this.grupaZaTreniranjeToolStripMenuItem.Text = "Grupa za treniranje";
             // 
             // unosNoveGrupeZaTreniranjeToolStripMenuItem
@@ -124,6 +126,13 @@
             this.izmenaČlanaKlubaToolStripMenuItem.Text = "Izmena člana kluba";
             this.izmenaČlanaKlubaToolStripMenuItem.Click += new System.EventHandler(this.izmenaČlanaKlubaToolStripMenuItem_Click);
             // 
+            // izmenaTreningaToolStripMenuItem
+            // 
+            this.izmenaTreningaToolStripMenuItem.Name = "izmenaTreningaToolStripMenuItem";
+            this.izmenaTreningaToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
+            this.izmenaTreningaToolStripMenuItem.Text = "Izmena treninga";
+            this.izmenaTreningaToolStripMenuItem.Click += new System.EventHandler(this.izmenaTreningaToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -153,5 +162,6 @@
         private System.Windows.Forms.ToolStripMenuItem prisustvoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unesiPrisustvaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem izmenaČlanaKlubaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izmenaTreningaToolStripMenuItem;
     }
 }

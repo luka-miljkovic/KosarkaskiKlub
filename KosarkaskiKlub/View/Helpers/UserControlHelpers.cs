@@ -54,6 +54,20 @@ namespace View.Helpers
             }
         }
 
+        public static bool ComboBoxValidation(ComboBox cmb)
+        {
+            if (cmb.SelectedIndex == -1)
+            {
+                cmb.BackColor = Color.LightCoral;
+                return false;
+            }
+            else
+            {
+                cmb.BackColor = Color.White;
+                return true;
+            }
+        }
+
         public static bool IntValidation(TextBox txt)
         {
             if(!int.TryParse(txt.Text, out int _))

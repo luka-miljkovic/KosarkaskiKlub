@@ -33,5 +33,10 @@ namespace View.Controller
         {
             frmMain.SetPanel(new UCIzmenaClanaKluba(new IzmenaClanaKlubaController()));
         }
+
+        internal void OpenUCIzmenaTreninga(FrmMain frmMain)
+        {
+            frmMain.SetPanel(new UCIzmenaTreninga(new IzmenaTreningaController()));
+        }
     }
 }

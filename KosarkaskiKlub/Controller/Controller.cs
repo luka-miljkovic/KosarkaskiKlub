@@ -119,5 +119,18 @@ namespace Controller
             SacuvajIzmeneClanaSO so = new SacuvajIzmeneClanaSO();
             so.ExecuteTemplate(requestObject);
         }
+
+        public Trening UcitajTrening(Trening requestObject)
+        {
+            UcitajTreningSO so = new UcitajTreningSO();
+            so.ExecuteTemplate(requestObject);
+            return so.Result;
+        }
+
+        public void SacuvajIzmeneTreninga(Trening requestObject)
+        {
+            SacuvajIzmeneTreningaSO so = new SacuvajIzmeneTreningaSO();
+            so.ExecuteTemplate(requestObject);
+        }
     }
 }

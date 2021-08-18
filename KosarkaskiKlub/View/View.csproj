@@ -53,6 +53,7 @@
     <Compile Include="Controller\EvidencijaClanarineController.cs" />
     <Compile Include="Controller\GrupaZaTreningController.cs" />
     <Compile Include="Controller\IzmenaClanaKlubaController.cs" />
+    <Compile Include="Controller\IzmenaTreningaController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\UnosPrisustvaController.cs" />
@@ -99,6 +100,12 @@
     <Compile Include="UserControls\UCIzmenaClanaKluba.Designer.cs">
       <DependentUpon>UCIzmenaClanaKluba.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCIzmenaTreninga.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCIzmenaTreninga.Designer.cs">
+      <DependentUpon>UCIzmenaTreninga.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCUnosPrisustva.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -131,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCIzmenaClanaKluba.resx">
       <DependentUpon>UCIzmenaClanaKluba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCIzmenaTreninga.resx">
+      <DependentUpon>UCIzmenaTreninga.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCUnosPrisustva.resx">
       <DependentUpon>UCUnosPrisustva.cs</DependentUpon>
