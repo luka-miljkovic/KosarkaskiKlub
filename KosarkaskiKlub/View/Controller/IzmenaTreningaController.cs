@@ -15,36 +15,45 @@ namespace View.Controller
         Trening trening = new Trening();
         internal void Pretrazitreninge(DateTimePicker dtpDatumTreninga, DataGridView dgvTreninzi)
         {
-            dgvTreninzi.DataSource = Communication.Communication.Instance.PretraziTreninge(dtpDatumTreninga.Value.ToString());
+            Trening trening = new Trening
+            {
+                GCondition = $"DatumTreninga='{dtpDatumTreninga.Value.Date}'"
+            };
+
+            List<Trening> listaTreninga = Communication.Communication.Instance.PretraziTreninge(trening);
+            
+            if(listaTreninga.Count == 0)
+            {
+                MessageBox.Show("Ne postoji ni jedan trening koji odgovara ovom kriterijumu");
+            }
+            else
+            {
+                dgvTreninzi.DataSource = listaTreninga;
+                MessageBox.Show("Prikaz treninga");
+            }
         }
 
-        internal void UcitajTrening(DataGridView dgvTreninzi, ComboBox cmbGrupe, TextBox txtVremeOd, TextBox txtVremeDo, DateTimePicker dtpDatumTreninga, TextBox txtDanTreninga, ComboBox cmbSale)
+        internal void UcitajTrening(DataGridView dgvTreninzi, TextBox txtGrupa, TextBox txtVremeOd, TextBox txtVremeDo, DateTimePicker dtpDatumTreninga, TextBox txtDanTreninga, ComboBox cmbSale)
         {
             try
             {
+                DataGridViewRow selectedRow = dgvTreninzi.SelectedCells[0].OwningRow;
                 trening = new Trening
                 {
-                    GCondition = $"TreningID={((Trening)dgvTreninzi.CurrentRow.DataBoundItem).TreningId} " +
-                    $"and GrupaZaTreniranjeID={((Trening)dgvTreninzi.CurrentRow.DataBoundItem).GrupaZaTreniranje.GrupaId}"
+                    GCondition = $"TreningID={((Trening)selectedRow.DataBoundItem).TreningId} " +
+                    $"and GrupaZaTreniranjeID={((Trening)selectedRow.DataBoundItem).GrupaZaTreniranje.GrupaId}"
                 };
 
-                try
-                {
-                    trening = Communication.Communication.Instance.UcitajTrening(trening);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message + trening.GrupaZaTreniranje.ToString() + trening.TreningId);
-                }
+                
+                trening = Communication.Communication.Instance.UcitajTrening(trening);
+                
                 if(trening == null)
                 {
                     MessageBox.Show("Trening se ne moze ucitati!");
                 }
                 else
                 {
-                    //cmbGrupe.SelectedIndex = cmbGrupe.FindStringExact(t.GrupaZaTreniranje.ToString());
-                    //cmbGrupe.SelectedIndex = 2;
+                    txtGrupa.Text = trening.GrupaZaTreniranje.ToString();
                     txtVremeOd.Text = trening.VremeOd;
                     txtVremeDo.Text = trening.VremeDo;
                     dtpDatumTreninga.Value = trening.DatumTreninga;
@@ -61,10 +70,9 @@ namespace View.Controller
             }
         }
 
-        internal void SacuvajIzmene(ComboBox cmbGrupe, TextBox txtVremeOd, TextBox txtVremeDo, DateTimePicker dtpDatumTreninga, TextBox txtDanTreninga, ComboBox cmbSale)
+        internal void SacuvajIzmene(TextBox txtGrupa, TextBox txtVremeOd, TextBox txtVremeDo, DateTimePicker dtpDatumTreninga, TextBox txtDanTreninga, ComboBox cmbSale)
         {
-            if(!UserControlHelpers.ComboBoxValidation(cmbGrupe) |
-                !UserControlHelpers.EmptyFieldValidation(txtVremeOd) | 
+            if( !UserControlHelpers.EmptyFieldValidation(txtVremeOd) | 
                 !UserControlHelpers.EmptyFieldValidation(txtVremeDo) |
                 !UserControlHelpers.ComboBoxValidation(cmbSale))
             {
@@ -84,7 +92,8 @@ namespace View.Controller
                 trening.SalaZaTrening = (SalaZaTrening)cmbSale.SelectedItem;
                 
                 Communication.Communication.Instance.SacuvajIZmeneTreninga(trening);
-                cmbGrupe.SelectedIndex = -1;
+                MessageBox.Show("Izmene su uspesno sacuvane!");
+                txtGrupa.Text = "";
                 txtVremeOd.Text = "";
                 txtVremeDo.Text = "";
                 dtpDatumTreninga.Value = DateTime.Now;

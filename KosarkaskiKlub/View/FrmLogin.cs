@@ -38,9 +38,10 @@ namespace View
         {
             if (loginController.Connect())
             {
+                loginController.Login(txtKorisnickoIme, txtLozinka, this);
                 //MessageBox.Show("Uspesno se konektovao na server");
             }
-            loginController.Login(txtKorisnickoIme, txtLozinka, this);
+            
         }
 
         private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)

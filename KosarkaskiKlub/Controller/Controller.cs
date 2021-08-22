@@ -85,10 +85,10 @@ namespace Controller
             so.ExecuteTemplate(clanKluba);
         }
 
-        public List<ClanKluba> PretraziClana(string requestObject)
+        public List<ClanKluba> PretraziClana(ClanKluba clanKluba)
         {
             PretraziClanaSO so = new PretraziClanaSO();
-            so.ExecuteTemplate(new ClanKluba { GCondition = requestObject });
+            so.ExecuteTemplate(clanKluba);
             return so.Result;
         }
 
@@ -98,10 +98,10 @@ namespace Controller
             so.ExecuteTemplate(clanarina);
         }
 
-        public List<Trening> PretraziTreninge(string requestObject)
+        public List<Trening> PretraziTreninge(Trening trening)
         {
             PretraziTreningeSO so = new PretraziTreningeSO();
-            so.ExecuteTemplate(new Trening { DatumTreninga = Convert.ToDateTime(requestObject), GCondition = $"DatumTreninga='{Convert.ToDateTime(requestObject)}'" });
+            so.ExecuteTemplate(trening);
             return so.Result;
         }
 
@@ -131,6 +131,13 @@ namespace Controller
         {
             SacuvajIzmeneTreningaSO so = new SacuvajIzmeneTreningaSO();
             so.ExecuteTemplate(requestObject);
+        }
+
+        public List<ClanKluba> UcitajClanaaKluba(ClanKluba requestObject)
+        {
+            UcitajClanaKlubaSO so = new UcitajClanaKlubaSO();
+            so.ExecuteTemplate(requestObject);
+            return so.Result;
         }
     }
 }

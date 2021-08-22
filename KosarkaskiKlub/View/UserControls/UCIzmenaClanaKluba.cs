@@ -29,14 +29,29 @@ namespace View.UserControls
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-            izmenaClanaKlubaController.PopuniPolja(dgvClanoviKluba, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
+            izmenaClanaKlubaController.UcitajClanaKluba(dgvClanoviKluba, txtId, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
             
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            izmenaClanaKlubaController.SacuvajIzmene(txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
-            MessageBox.Show("Izmene su uspesno sacuvane");
+            izmenaClanaKlubaController.SacuvajIzmene(txtId, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa, dgvClanoviKluba, txtImePrezime);
+            //MessageBox.Show("Izmene su uspesno sacuvane");
+        }
+
+        //private void dgvClanoviKluba_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    izmenaClanaKlubaController.UcitajClanaKluba(dgvClanoviKluba, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
+        //}
+
+        private void dgvClanoviKluba_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            izmenaClanaKlubaController.UcitajClanaKluba(dgvClanoviKluba, txtId, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
+        }
+
+        private void UCIzmenaClanaKluba_Load(object sender, EventArgs e)
+        {
+            izmenaClanaKlubaController.UcitajGrupe(cmbGrupa);
         }
     }
 }

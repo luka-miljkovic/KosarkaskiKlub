@@ -16,10 +16,10 @@ namespace Common
         PretraziClana,
         EvidentirajPlacanjeClanarine,
         PretraziTreninge,
-        PrikaziClana,
         SacuvajPrisustva,
         SacuvajIzmeneClana,
         UcitajTrening,
-        SacuvajIzmeneTreninga
+        SacuvajIzmeneTreninga,
+        UcitajClanaKluba
     }
 }

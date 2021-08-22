@@ -41,11 +41,11 @@
             this.btnPretrazi = new System.Windows.Forms.Button();
             this.btnSacuvajIzmene = new System.Windows.Forms.Button();
             this.dgvTreninzi = new System.Windows.Forms.DataGridView();
-            this.cmbGrupe = new System.Windows.Forms.ComboBox();
             this.cmbSale = new System.Windows.Forms.ComboBox();
             this.txtVremeOd = new System.Windows.Forms.TextBox();
             this.txtVremeDo = new System.Windows.Forms.TextBox();
             this.txtDanTreninga = new System.Windows.Forms.TextBox();
+            this.txtGrupa = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTreninzi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,16 +124,18 @@
             // 
             // dtpDatumTreningaIzbor
             // 
-            this.dtpDatumTreningaIzbor.Location = new System.Drawing.Point(210, 100);
+            this.dtpDatumTreningaIzbor.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDatumTreningaIzbor.Location = new System.Drawing.Point(210, 105);
             this.dtpDatumTreningaIzbor.Name = "dtpDatumTreningaIzbor";
-            this.dtpDatumTreningaIzbor.Size = new System.Drawing.Size(285, 22);
+            this.dtpDatumTreningaIzbor.Size = new System.Drawing.Size(132, 22);
             this.dtpDatumTreningaIzbor.TabIndex = 8;
             // 
             // dtpDatumTreninga
             // 
+            this.dtpDatumTreninga.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatumTreninga.Location = new System.Drawing.Point(210, 456);
             this.dtpDatumTreninga.Name = "dtpDatumTreninga";
-            this.dtpDatumTreninga.Size = new System.Drawing.Size(285, 22);
+            this.dtpDatumTreninga.Size = new System.Drawing.Size(132, 22);
             this.dtpDatumTreninga.TabIndex = 9;
             this.dtpDatumTreninga.ValueChanged += new System.EventHandler(this.dtpDatumTreninga_ValueChanged);
             // 
@@ -159,22 +161,20 @@
             // 
             // dgvTreninzi
             // 
+            this.dgvTreninzi.AllowUserToAddRows = false;
+            this.dgvTreninzi.AllowUserToDeleteRows = false;
+            this.dgvTreninzi.AllowUserToResizeColumns = false;
+            this.dgvTreninzi.AllowUserToResizeRows = false;
             this.dgvTreninzi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTreninzi.Location = new System.Drawing.Point(49, 180);
             this.dgvTreninzi.Name = "dgvTreninzi";
+            this.dgvTreninzi.ReadOnly = true;
+            this.dgvTreninzi.RowHeadersVisible = false;
             this.dgvTreninzi.RowHeadersWidth = 51;
             this.dgvTreninzi.RowTemplate.Height = 24;
-            this.dgvTreninzi.Size = new System.Drawing.Size(446, 150);
+            this.dgvTreninzi.Size = new System.Drawing.Size(1004, 150);
             this.dgvTreninzi.TabIndex = 12;
-            this.dgvTreninzi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTreninzi_CellContentClick);
-            // 
-            // cmbGrupe
-            // 
-            this.cmbGrupe.FormattingEnabled = true;
-            this.cmbGrupe.Location = new System.Drawing.Point(210, 346);
-            this.cmbGrupe.Name = "cmbGrupe";
-            this.cmbGrupe.Size = new System.Drawing.Size(285, 24);
-            this.cmbGrupe.TabIndex = 13;
+            this.dgvTreninzi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTreninzi_CellClick);
             // 
             // cmbSale
             // 
@@ -206,15 +206,24 @@
             this.txtDanTreninga.Size = new System.Drawing.Size(132, 22);
             this.txtDanTreninga.TabIndex = 17;
             // 
+            // txtGrupa
+            // 
+            this.txtGrupa.Enabled = false;
+            this.txtGrupa.Location = new System.Drawing.Point(210, 348);
+            this.txtGrupa.Name = "txtGrupa";
+            this.txtGrupa.ReadOnly = true;
+            this.txtGrupa.Size = new System.Drawing.Size(132, 22);
+            this.txtGrupa.TabIndex = 18;
+            // 
             // UCIzmenaTreninga
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtGrupa);
             this.Controls.Add(this.txtDanTreninga);
             this.Controls.Add(this.txtVremeDo);
             this.Controls.Add(this.txtVremeOd);
             this.Controls.Add(this.cmbSale);
-            this.Controls.Add(this.cmbGrupe);
             this.Controls.Add(this.dgvTreninzi);
             this.Controls.Add(this.btnSacuvajIzmene);
             this.Controls.Add(this.btnPretrazi);
@@ -229,7 +238,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UCIzmenaTreninga";
-            this.Size = new System.Drawing.Size(792, 648);
+            this.Size = new System.Drawing.Size(1412, 648);
             this.Load += new System.EventHandler(this.UCIzmenaTreninga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTreninzi)).EndInit();
             this.ResumeLayout(false);
@@ -252,10 +261,10 @@
         private System.Windows.Forms.Button btnPretrazi;
         private System.Windows.Forms.Button btnSacuvajIzmene;
         private System.Windows.Forms.DataGridView dgvTreninzi;
-        private System.Windows.Forms.ComboBox cmbGrupe;
         private System.Windows.Forms.ComboBox cmbSale;
         private System.Windows.Forms.TextBox txtVremeOd;
         private System.Windows.Forms.TextBox txtVremeDo;
         private System.Windows.Forms.TextBox txtDanTreninga;
+        private System.Windows.Forms.TextBox txtGrupa;
     }
 }

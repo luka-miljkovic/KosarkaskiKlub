@@ -18,54 +18,6 @@ namespace View.Communication
 
         private Socket socket;
 
-        
-
-        private CommunicationClient client;
-        public static Communication Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Communication();
-                }
-                return instance;
-            }
-        }
-
-        internal List<Trening> PretraziTreninge(string datum)
-        {
-            Request request = new Request
-            {
-                Operation = Operation.PretraziTreninge,
-                RequestObject = datum
-            };
-            client.SendRequest(request);
-            return (List<Trening>)client.GetResponseResult();
-        }
-
-        internal  Trening UcitajTrening(Trening t)
-        {
-            Request request = new Request
-            {
-                Operation = Operation.UcitajTrening,
-                RequestObject = t
-            };
-            client.SendRequest(request);
-            return (Trening)client.GetResponseResult();
-        }
-
-        internal List<ClanKluba> PretreziClana(string imePrezime)
-        {
-            Request request = new Request
-            {
-                Operation = Operation.PretraziClana,
-                RequestObject = imePrezime
-            };
-            client.SendRequest(request);
-            return (List<ClanKluba>)client.GetResponseResult();
-        }
-
         private Communication()
         {
 
@@ -82,6 +34,67 @@ namespace View.Communication
 
         }
 
+        private CommunicationClient client;
+        public static Communication Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Communication();
+                }
+                return instance;
+            }
+        }
+
+        internal List<Trening> PretraziTreninge(Trening trening)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PretraziTreninge,
+                RequestObject = trening
+            };
+            client.SendRequest(request);
+            return (List<Trening>)client.GetResponseResult();
+        }
+
+        internal  Trening UcitajTrening(Trening t)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.UcitajTrening,
+                RequestObject = t
+            };
+            client.SendRequest(request);
+            return (Trening)client.GetResponseResult();
+        }
+
+        internal ClanKluba UcitajClanaKluba(ClanKluba clanKluba)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.UcitajClanaKluba,
+                RequestObject = clanKluba
+            };
+            client.SendRequest(request);
+            List<ClanKluba> lista = (List<ClanKluba>)client.GetResponseResult();
+            return lista[0];
+        }
+
+        internal List<ClanKluba> PretreziClana(ClanKluba clanKluba)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PretraziClana,
+                RequestObject = clanKluba
+            };
+            client.SendRequest(request);
+            List<ClanKluba> clanovi = (List<ClanKluba>)client.GetResponseResult();
+            return clanovi;
+        }
+
+        
+
         internal void SacuvajPrisustva(BindingList<Prisustvo> prisustva)
         {
             Request request = new Request
@@ -90,6 +103,7 @@ namespace View.Communication
                 RequestObject = prisustva
             };
             client.SendRequest(request);
+            client.GetResponseResult();
         }
 
         internal void SacuvajIzmeneClana(ClanKluba clanKluba)
@@ -100,6 +114,7 @@ namespace View.Communication
                 RequestObject = clanKluba
             };
             client.SendRequest(request);
+            client.GetResponseResult();
         }
 
         internal List<SalaZaTrening> VratiSale()
@@ -120,6 +135,7 @@ namespace View.Communication
                 RequestObject = clanarina
             };
             client.SendRequest(request);
+            client.GetResponseResult();
         }
 
         internal void SacuvajIZmeneTreninga(Trening trening)
@@ -130,9 +146,10 @@ namespace View.Communication
                 RequestObject = trening
             };
             client.SendRequest(request);
+            client.GetResponseResult();
         }
 
-        internal object VratiGrupe()
+        internal List<GrupaZaTreniranje> VratiGrupe()
         {
             Request request = new Request
             {

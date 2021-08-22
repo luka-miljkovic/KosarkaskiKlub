@@ -26,16 +26,15 @@ namespace View.UserControls
             izmenaTreningaController.Pretrazitreninge(dtpDatumTreningaIzbor, dgvTreninzi);
         }
 
-        private void dgvTreninzi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvTreninzi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            izmenaTreningaController.UcitajTrening(dgvTreninzi, cmbGrupe, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale);
+            izmenaTreningaController.UcitajTrening(dgvTreninzi, txtGrupa, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale);
         }
 
         private void UCIzmenaTreninga_Load(object sender, EventArgs e)
         {
             izmenaTreningaController.UcitajSale(cmbSale);
-            izmenaTreningaController.UcitajGrupe(cmbGrupe);
-        }
+       }
 
         private void dtpDatumTreninga_ValueChanged(object sender, EventArgs e)
         {
@@ -44,7 +43,7 @@ namespace View.UserControls
 
         private void btnSacuvajIzmene_Click(object sender, EventArgs e)
         {
-            izmenaTreningaController.SacuvajIzmene(cmbGrupe, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale);
+            izmenaTreningaController.SacuvajIzmene(txtGrupa, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale);
 
         }
     }

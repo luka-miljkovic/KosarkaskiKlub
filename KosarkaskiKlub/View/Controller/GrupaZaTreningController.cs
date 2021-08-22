@@ -17,9 +17,11 @@ namespace View.Controller
         BindingList<Trening> treninzi = new BindingList<Trening>();
         
 
-        internal void UcitajSale(UCGrupaZaTreniranje uCGrupaZaTreniranje)
+        internal void UcitajSale(ComboBox cmbSale)
         {
-            //uCGrupaZaTreniranje.com
+            cmbSale.DataSource = Communication.Communication.Instance.VratiSale();
+            cmbSale.SelectedIndex = -1;
+            cmbSale.Text = "Izaberite Salu";
         }
 
         internal void DodajTrening(TextBox txtRBTreninga, ComboBox cmbDanTreninga, TextBox txtVremeOd, TextBox txtVremeDo, ComboBox cmbSale, DataGridView dgvTreninzi, UCGrupaZaTreniranje uCGrupaZaTreniranje)
@@ -60,7 +62,7 @@ namespace View.Controller
             }
             uCGrupaZaTreniranje.listaTreninga.Add(new Trening
             {
-                //TreningId = int.Parse(txtRBTreninga.Text),
+                TreningId = int.Parse(txtRBTreninga.Text),
                 DanTreninga = danTreninga,
                 VremeOd = (string)txtVremeOd.Text,
                 VremeDo = (string)txtVremeDo.Text,
@@ -69,12 +71,10 @@ namespace View.Controller
             dgvTreninzi.DataSource = uCGrupaZaTreniranje.listaTreninga;
         }
 
-        internal void SacuvajNovuGurpu(TextBox txtNazivGrupe, ComboBox cmbUzrast, TextBox txtDatumOd, TextBox txtDatumDo, UCGrupaZaTreniranje uCGrupaZaTreniranje)
+        internal void SacuvajNovuGurpu(TextBox txtNazivGrupe, ComboBox cmbUzrast, DateTimePicker dtpDatumOd, DateTimePicker dtpDatumDo, UCGrupaZaTreniranje uCGrupaZaTreniranje)
         {
             if(!UserControlHelpers.EmptyFieldValidation(txtNazivGrupe)|
                 cmbUzrast.SelectedItem == null |
-                !UserControlHelpers.DateValidation(txtDatumOd) |
-                !UserControlHelpers.DateValidation(txtDatumDo) |
                 uCGrupaZaTreniranje.listaTreninga.Count() == 0)
             {
                 return;
@@ -84,8 +84,8 @@ namespace View.Controller
                 NazivGrupe = txtNazivGrupe.Text,
                 DatumFormiranja = DateTime.Now,
                 UzrastGrupe = (string)cmbUzrast.SelectedItem,
-                DatumOd = DateTime.Parse(txtDatumOd.Text),
-                DatumDo = DateTime.Parse(txtDatumDo.Text),
+                DatumOd = dtpDatumOd.Value,
+                DatumDo = dtpDatumDo.Value,
                 Treninzi = uCGrupaZaTreniranje.listaTreninga,
                 Trener = MainCoordinator.Instance.Trener
             };

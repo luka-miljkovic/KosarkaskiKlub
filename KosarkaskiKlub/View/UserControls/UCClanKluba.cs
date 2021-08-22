@@ -22,14 +22,12 @@ namespace View.UserControls
             this.clanKlubaController = clanKlubaController;
             clanKlubaController.UcitajGrupe(cmbGrupa);
             txtImePrezime.Text = "Luka Miljkovic";
-            txtDatumRodjenja.Text = "12.12.2020";
-            txtSatumUpisa.Text = "12.12.2020";
             txtSkola.Text = "CK";
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            clanKlubaController.SacuvajClanaKluba(txtImePrezime, txtDatumRodjenja, txtSatumUpisa, txtSkola, cmbGrupa);
+            clanKlubaController.SacuvajClanaKluba(txtImePrezime, dtpDatumRodjenja, dtpDatumUpisa, txtSkola, cmbGrupa);
         }
     }
 }

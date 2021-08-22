@@ -14,6 +14,7 @@ namespace SystemOperations.GrupaZaTreniranjeSO
         protected override void ExecuteOperation(IEntity entity)
         {
             Result = Repository.GetSpecific(entity).Cast<Trening>().ToList()[0];
+            Result.GrupaZaTreniranje = Repository.GetSpecific(new GrupaZaTreniranje { GCondition = $"GrupaID={Result.GrupaZaTreniranje.GrupaId}" }).Cast<GrupaZaTreniranje>().ToList()[0];
         }
     }
 }

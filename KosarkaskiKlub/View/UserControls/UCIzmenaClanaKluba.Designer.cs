@@ -32,7 +32,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtImePrezime = new System.Windows.Forms.TextBox();
             this.btnPretrazi = new System.Windows.Forms.Button();
-            this.btnIzmeni = new System.Windows.Forms.Button();
             this.dgvClanoviKluba = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,6 +44,8 @@
             this.dtpDatumUpisa = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSacuvaj = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanoviKluba)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,25 +84,21 @@
             this.btnPretrazi.UseVisualStyleBackColor = true;
             this.btnPretrazi.Click += new System.EventHandler(this.btnPretrazi_Click);
             // 
-            // btnIzmeni
-            // 
-            this.btnIzmeni.Location = new System.Drawing.Point(47, 320);
-            this.btnIzmeni.Name = "btnIzmeni";
-            this.btnIzmeni.Size = new System.Drawing.Size(130, 27);
-            this.btnIzmeni.TabIndex = 4;
-            this.btnIzmeni.Text = "Izmeni člana";
-            this.btnIzmeni.UseVisualStyleBackColor = true;
-            this.btnIzmeni.Click += new System.EventHandler(this.btnIzmeni_Click);
-            // 
             // dgvClanoviKluba
             // 
+            this.dgvClanoviKluba.AllowUserToAddRows = false;
+            this.dgvClanoviKluba.AllowUserToResizeColumns = false;
+            this.dgvClanoviKluba.AllowUserToResizeRows = false;
             this.dgvClanoviKluba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClanoviKluba.Location = new System.Drawing.Point(47, 150);
             this.dgvClanoviKluba.Name = "dgvClanoviKluba";
+            this.dgvClanoviKluba.ReadOnly = true;
+            this.dgvClanoviKluba.RowHeadersVisible = false;
             this.dgvClanoviKluba.RowHeadersWidth = 51;
             this.dgvClanoviKluba.RowTemplate.Height = 24;
-            this.dgvClanoviKluba.Size = new System.Drawing.Size(353, 150);
+            this.dgvClanoviKluba.Size = new System.Drawing.Size(787, 150);
             this.dgvClanoviKluba.TabIndex = 5;
+            this.dgvClanoviKluba.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClanoviKluba_CellClick);
             // 
             // label3
             // 
@@ -163,6 +160,7 @@
             // 
             // dtpDatumRodjenja
             // 
+            this.dtpDatumRodjenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatumRodjenja.Location = new System.Drawing.Point(192, 415);
             this.dtpDatumRodjenja.Name = "dtpDatumRodjenja";
             this.dtpDatumRodjenja.Size = new System.Drawing.Size(200, 22);
@@ -170,6 +168,7 @@
             // 
             // dtpDatumUpisa
             // 
+            this.dtpDatumUpisa.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatumUpisa.Location = new System.Drawing.Point(192, 456);
             this.dtpDatumUpisa.Name = "dtpDatumUpisa";
             this.dtpDatumUpisa.Size = new System.Drawing.Size(200, 22);
@@ -195,10 +194,29 @@
             this.btnSacuvaj.UseVisualStyleBackColor = true;
             this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(44, 335);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(21, 17);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "ID";
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(192, 330);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(200, 22);
+            this.txtId.TabIndex = 18;
+            // 
             // UCIzmenaClanaKluba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dtpDatumUpisa);
@@ -211,13 +229,13 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvClanoviKluba);
-            this.Controls.Add(this.btnIzmeni);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UCIzmenaClanaKluba";
-            this.Size = new System.Drawing.Size(687, 693);
+            this.Size = new System.Drawing.Size(877, 693);
+            this.Load += new System.EventHandler(this.UCIzmenaClanaKluba_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanoviKluba)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -230,7 +248,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtImePrezime;
         private System.Windows.Forms.Button btnPretrazi;
-        private System.Windows.Forms.Button btnIzmeni;
         private System.Windows.Forms.DataGridView dgvClanoviKluba;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -243,5 +260,7 @@
         private System.Windows.Forms.DateTimePicker dtpDatumUpisa;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSacuvaj;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

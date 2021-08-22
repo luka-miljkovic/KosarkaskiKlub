@@ -19,22 +19,22 @@ namespace View.UserControls
         {
             InitializeComponent();
             this.unosPrisustvaController = unosPrisustvaController;
-            this.txtDatumTreninga.Text = "10.10.2020";
+            this.dtpDatumTreninga.Value = Convert.ToDateTime("10.10.2020");
         }
 
         private void btnPretraziTreninge_Click(object sender, EventArgs e)
         {
-            unosPrisustvaController.PretraziTreninge(txtDatumTreninga, dgvTreninzi);
-        }
-
-        private void btnPrikaziClanove_Click(object sender, EventArgs e)
-        {
-            unosPrisustvaController.PrikaziClanove(dgvTreninzi, dgvClanovi);
+            unosPrisustvaController.PretraziTreninge(dtpDatumTreninga, dgvTreninzi);
         }
 
         private void btnSacuvajPrisustva_Click(object sender, EventArgs e)
         {
             unosPrisustvaController.SacuvajPrisustva(dgvClanovi);
+        }
+
+        private void dgvTreninzi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            unosPrisustvaController.PrikaziClanove(dgvTreninzi, dgvClanovi);
         }
     }
 }

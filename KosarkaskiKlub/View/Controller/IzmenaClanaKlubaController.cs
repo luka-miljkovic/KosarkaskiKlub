@@ -1,44 +1,60 @@
 ﻿using Domen;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using View.Exceptions;
 using View.Helpers;
 
 namespace View.Controller
 {
     public class IzmenaClanaKlubaController
     {
-        ClanKluba clanKluba = new ClanKluba();
         internal void PretraziClana(TextBox txtImePrezime, DataGridView dgvClanoviKluba, TextBox txtImePrezimeIzmena, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtNazivSkole, ComboBox cmbGrupe)
         {
             if (!UserControlHelpers.EmptyFieldValidation(txtImePrezime))
             {
+                MessageBox.Show("Niste popunili polje za pretrazivanje!");
                 return;
             }
-            dgvClanoviKluba.DataSource = Communication.Communication.Instance.PretreziClana($"ImePrezime = '{txtImePrezime.Text}'");
 
-        }
-
-        internal void PopuniPolja(DataGridView dgvClanoviKluba, TextBox txtImePrezimeIzmena, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtNazivSkole, ComboBox cmbGrupa)
-        {
-            if (dgvClanoviKluba.CurrentRow == null)
+            try
             {
-                return;
-            }
+                dgvClanoviKluba.Refresh();
+                ClanKluba clanKluba = new ClanKluba
+                {
+                    GCondition = $"CK.ImePrezime LIKE '{txtImePrezime.Text}%'"
+                };
 
-            clanKluba = (ClanKluba)dgvClanoviKluba.CurrentRow.DataBoundItem;
-            txtImePrezimeIzmena.Text = clanKluba.ImePrezime;
-            dtpDatumRodjenja.Value = clanKluba.DatumRodjenja;
-            dtpDatumUpisa.Value = clanKluba.DatumUpisa;
-            txtNazivSkole.Text = clanKluba.NazivSkole;
-            cmbGrupa.DataSource = Communication.Communication.Instance.VratiGrupe();
+                List<ClanKluba> listaClanova = new List<ClanKluba>();
+
+                listaClanova = Communication.Communication.Instance.PretreziClana(clanKluba);
+
+
+                if (listaClanova == null || listaClanova.Count == 0)
+                {
+                    MessageBox.Show("Ne postoji ni jedan clan kluba koji odgovara zadatoj vrednosti!");
+                }
+                else
+                {
+                    dgvClanoviKluba.DataSource = new BindingList<ClanKluba>(listaClanova);
+                    MessageBox.Show("Prikaz clanova kluba");
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        internal void SacuvajIzmene(TextBox txtImePrezimeIzmena, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtNazivSkole, ComboBox cmbGrupa)
+        internal void SacuvajIzmene(TextBox txtId, TextBox txtImePrezimeIzmena, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtNazivSkole, ComboBox cmbGrupa, DataGridView dgvClanoviKluba, TextBox txtImePrezime)
         {
+            ClanKluba clanKluba = new ClanKluba();
+
+            clanKluba.ClanKlubaId = Convert.ToInt32(txtId.Text);
             clanKluba.ImePrezime = txtImePrezimeIzmena.Text;
             clanKluba.DatumRodjenja = dtpDatumRodjenja.Value;
             clanKluba.DatumUpisa = dtpDatumUpisa.Value;
@@ -47,6 +63,63 @@ namespace View.Controller
 
             Communication.Communication.Instance.SacuvajIzmeneClana(clanKluba);
             MessageBox.Show("Izmene za clana su uspesno sacuvane");
+
+            txtId.Clear();
+            txtImePrezimeIzmena.Text = "";
+            dtpDatumRodjenja.Value = DateTime.Now;
+            dtpDatumUpisa.Value = DateTime.Now;
+            txtNazivSkole.Text = "";
+            cmbGrupa.SelectedIndex = -1;
+            txtImePrezime.Text = "";
         }
+
+        internal void UcitajGrupe(ComboBox cmbGrupa)
+        {
+            try
+            {
+                cmbGrupa.DataSource = Communication.Communication.Instance.VratiGrupe();
+                cmbGrupa.SelectedIndex = -1;
+                cmbGrupa.Text = "Izaberite grupu za treniranje";
+            }
+            catch (SystemOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        internal void UcitajClanaKluba(DataGridView dgvClanoviKluba, TextBox txtId, TextBox txtImePrezimeIzmena, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtNazivSkole, ComboBox cmbGrupa)
+        {
+            try
+            {
+                DataGridViewRow selectedRow = dgvClanoviKluba.SelectedCells[0].OwningRow;
+                ClanKluba clanKluba = new ClanKluba
+                {
+                    GCondition = $"ClanKlubaID={((ClanKluba)selectedRow.DataBoundItem).ClanKlubaId}"
+                };
+                clanKluba = Communication.Communication.Instance.UcitajClanaKluba(clanKluba);
+                if(clanKluba == null)
+                {
+                    MessageBox.Show("Nije moguce ucitati clana kluba");
+                }
+                else
+                {
+                    txtId.Text = Convert.ToString(clanKluba.ClanKlubaId);
+                    txtImePrezimeIzmena.Text = clanKluba.ImePrezime;
+                    dtpDatumRodjenja.Value = clanKluba.DatumRodjenja;
+                    dtpDatumUpisa.Value = clanKluba.DatumUpisa;
+                    txtNazivSkole.Text = clanKluba.NazivSkole;
+                    cmbGrupa.SelectedIndex = cmbGrupa.FindStringExact(clanKluba.GrupaZaTreniranje.ToString());
+                }
+            }
+            catch (SystemOperationException ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+
+            
+        }
+
+        
     }
 }

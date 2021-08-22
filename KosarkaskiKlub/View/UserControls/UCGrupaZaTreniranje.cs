@@ -21,8 +21,7 @@ namespace View.UserControls
         {
             this.grupaZaTreningController = grupaZaTreningController;
             InitializeComponent();
-            this.txtDatumOd.Text = "10.10.2020";
-            this.txtDatumDo.Text = "12.10.2020";
+            this.cmbUzrast.Text = "Izaberite uzrast";
             this.txtNazivGrupe.Text = "grupa1";
             this.txtVremeOd.Text = "18:00";
             this.txtVremeDo.Text = "20:00";
@@ -37,7 +36,8 @@ namespace View.UserControls
 
         private void UCGrupaZaTreniranje_Load(object sender, EventArgs e)
         {
-            cmbSale.DataSource = Communication.Communication.Instance.VratiSale();
+            grupaZaTreningController.UcitajSale(cmbSale);
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace View.UserControls
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            grupaZaTreningController.SacuvajNovuGurpu(txtNazivGrupe, cmbUzrast, txtDatumOd, txtDatumDo, this);
+            grupaZaTreningController.SacuvajNovuGurpu(txtNazivGrupe, cmbUzrast, dtpDatumOd, dtpDatumDo, this);
         }
     }
 }

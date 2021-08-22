@@ -23,7 +23,6 @@ namespace View.UserControls
             txtImePrezime.Text = "Luka Miljkovic";
             txtMesec.Text = "09";
             txtGodina.Text = "2020";
-            txtDatumUplate.Text = "12.12.2020";
             txtIznos.Text = "2000.00";
         }
 
@@ -34,7 +33,12 @@ namespace View.UserControls
 
         private void btnSacuvajUplatu_Click(object sender, EventArgs e)
         {
-            evidencijaClanarineController.SacuvajUplatu(txtDatumUplate, txtMesec, txtGodina, txtIznos, dgvClanKluba);
+            evidencijaClanarineController.SacuvajUplatu(dtpDatumUplate, txtMesec, txtGodina, txtIznos, dgvClanKluba);
+        }
+
+        private void dgvClanKluba_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            evidencijaClanarineController.UcitajClana(dgvClanKluba, txtIdClanaKluba, txtImePrezimeClana);
         }
     }
 }

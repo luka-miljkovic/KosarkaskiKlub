@@ -36,32 +36,62 @@ namespace View
 
         private void unosNoveGrupeZaTreniranjeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mainController.OpenUCGrupaZaTreniranje(this);
+            
         }
 
         private void upisNovogClanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mainController.OpenUCClanKluba(this);
+            
         }
 
         private void evidencijaClanarineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mainController.OpenUCEvidencijaClanarine(this);
+            
         }
 
         private void unesiPrisustvaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mainController.OpenUCUnosPrisustva(this);
+            
         }
 
         private void izmenaČlanaKlubaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mainController.OpenUCIzmenaClanaKluba(this);
+            
         }
 
         private void izmenaTreningaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void unosNoveGrupeZaTreniranjeToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            mainController.OpenUCGrupaZaTreniranje(this);
+        }
+
+        private void izmenaTreningaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
             mainController.OpenUCIzmenaTreninga(this);
+        }
+
+        private void unosNovogČlanaKlubaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCClanKluba(this);
+        }
+
+        private void evidencijaPlaćanjaČlanarineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCEvidencijaClanarine(this);
+        }
+
+        private void izmenaČlanaKlunbaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCIzmenaClanaKluba(this);
+        }
+
+        private void evidencijaPrisustvaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCUnosPrisustva(this);
         }
     }
 }

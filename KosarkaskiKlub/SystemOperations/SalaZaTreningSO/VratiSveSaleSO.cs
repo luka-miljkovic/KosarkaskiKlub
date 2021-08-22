@@ -9,6 +9,7 @@ namespace SystemOperations.SalaZaTreningSO
 {
     public class VratiSveSaleSO : SystemOperationBase
     {
+
         public List<SalaZaTrening> Result { get; private set; }
         protected override void ExecuteOperation(IEntity entity)
         {
