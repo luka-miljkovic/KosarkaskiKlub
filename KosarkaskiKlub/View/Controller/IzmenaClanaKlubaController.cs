@@ -87,7 +87,7 @@ namespace View.Controller
             }
         }
 
-        internal void UcitajClanaKluba(DataGridView dgvClanoviKluba, TextBox txtId, TextBox txtImePrezimeIzmena, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtNazivSkole, ComboBox cmbGrupa)
+        internal void UcitajClanaKluba(DataGridView dgvClanoviKluba, TextBox txtId, TextBox txtImePrezimeIzmena, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtNazivSkole, ComboBox cmbGrupa, Button btnSacuvaj)
         {
             try
             {
@@ -108,7 +108,19 @@ namespace View.Controller
                     dtpDatumRodjenja.Value = clanKluba.DatumRodjenja;
                     dtpDatumUpisa.Value = clanKluba.DatumUpisa;
                     txtNazivSkole.Text = clanKluba.NazivSkole;
-                    cmbGrupa.SelectedIndex = cmbGrupa.FindStringExact(clanKluba.GrupaZaTreniranje.ToString());
+                    cmbGrupa.SelectedIndex = VratiIndexGrupe(clanKluba.GrupaZaTreniranje);
+
+                   if(clanKluba.GrupaZaTreniranje.Trener.TrenerId != MainCoordinator.Instance.Trener.TrenerId)
+                    {
+                        MessageBox.Show("Ne mozete vrsiti izmene za clana koji nije u vasoj grupi");
+                        btnSacuvaj.Enabled = false;
+                        txtImePrezimeIzmena.Enabled = false;
+                        dtpDatumRodjenja.Enabled = false;
+                        dtpDatumUpisa.Enabled = false;
+                        txtNazivSkole.Enabled = false;
+                        cmbGrupa.Enabled = false;
+
+                    }
                 }
             }
             catch (SystemOperationException ex )
@@ -120,6 +132,17 @@ namespace View.Controller
             
         }
 
-        
+        private int VratiIndexGrupe(GrupaZaTreniranje grupaZaTreniranje)
+        {
+            List<GrupaZaTreniranje> lista = Communication.Communication.Instance.VratiGrupe();
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if(lista[i].GrupaId == grupaZaTreniranje.GrupaId)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

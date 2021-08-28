@@ -25,7 +25,7 @@ namespace Domen
         [Browsable(false)]
         public string IdName => "ClanKlubaId";
         [Browsable(false)]
-        public string JoinCondition => "ON (CK.GrupaZaTreniranjeID = GT.GrupaID)";
+        public string JoinCondition => "ON (CK.GrupaZaTreniranjeID = GT.GrupaID) JOIN Trener T ON (GT.TrenerID = T.TrenerID)";
         [Browsable(false)]
         public string JoinTable => "JOIN GrupaZaTreniranje GT";
         [Browsable(false)]
@@ -54,7 +54,11 @@ namespace Domen
                     NazivSkole = (string)reader[4],
                     GrupaZaTreniranje = new GrupaZaTreniranje
                     {
-                        GrupaId = (int)reader[5]
+                        GrupaId = (int)reader[5],
+                        Trener = new Trener
+                        {
+                            TrenerId = (int)reader[10]
+                        }
                     }
                 });
             }

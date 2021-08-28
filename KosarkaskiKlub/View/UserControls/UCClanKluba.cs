@@ -20,7 +20,7 @@ namespace View.UserControls
         {
             InitializeComponent();
             this.clanKlubaController = clanKlubaController;
-            clanKlubaController.UcitajGrupe(cmbGrupa);
+            clanKlubaController.UcitajGrupe(cmbGrupa, btnSacuvaj);
             txtImePrezime.Text = "Luka Miljkovic";
             txtSkola.Text = "CK";
         }

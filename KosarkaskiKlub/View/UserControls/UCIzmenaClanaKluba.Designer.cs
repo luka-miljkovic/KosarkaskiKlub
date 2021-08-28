@@ -152,6 +152,7 @@
             // 
             // cmbGrupa
             // 
+            this.cmbGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGrupa.FormattingEnabled = true;
             this.cmbGrupa.Location = new System.Drawing.Point(192, 531);
             this.cmbGrupa.Name = "cmbGrupa";
@@ -160,7 +161,8 @@
             // 
             // dtpDatumRodjenja
             // 
-            this.dtpDatumRodjenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDatumRodjenja.CustomFormat = "dd.MM.yyyy.";
+            this.dtpDatumRodjenja.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDatumRodjenja.Location = new System.Drawing.Point(192, 415);
             this.dtpDatumRodjenja.Name = "dtpDatumRodjenja";
             this.dtpDatumRodjenja.Size = new System.Drawing.Size(200, 22);
@@ -168,7 +170,8 @@
             // 
             // dtpDatumUpisa
             // 
-            this.dtpDatumUpisa.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDatumUpisa.CustomFormat = "dd.MM.yyyy.";
+            this.dtpDatumUpisa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDatumUpisa.Location = new System.Drawing.Point(192, 456);
             this.dtpDatumUpisa.Name = "dtpDatumUpisa";
             this.dtpDatumUpisa.Size = new System.Drawing.Size(200, 22);

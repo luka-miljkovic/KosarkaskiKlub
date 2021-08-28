@@ -59,15 +59,5 @@ namespace View.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap undraw_basketball_agx4 {
-            get {
-                object obj = ResourceManager.GetObject("undraw_basketball_agx4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

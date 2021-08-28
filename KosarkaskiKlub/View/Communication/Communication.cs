@@ -34,6 +34,8 @@ namespace View.Communication
 
         }
 
+        
+
         private CommunicationClient client;
         public static Communication Instance
         {
@@ -58,6 +60,39 @@ namespace View.Communication
             return (List<Trening>)client.GetResponseResult();
         }
 
+        internal List<GrupaZaTreniranje> PretraziGrupe(GrupaZaTreniranje grupa)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.PretraziGrupe,
+                RequestObject = grupa
+            };
+            client.SendRequest(request);
+            return (List<GrupaZaTreniranje>)client.GetResponseResult();
+        }
+
+        internal GrupaZaTreniranje UcitajGrupu(GrupaZaTreniranje grupa)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.UcitajGrupu,
+                RequestObject = grupa
+            };
+            client.SendRequest(request);
+            return (GrupaZaTreniranje)client.GetResponseResult();
+        }
+
+        internal List<Prisustvo> VratiPrisustva(Prisustvo prisustvo)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiPrisustva,
+                RequestObject = prisustvo
+            };
+            client.SendRequest(request);
+            return (List<Prisustvo>)client.GetResponseResult();
+        }
+
         internal  Trening UcitajTrening(Trening t)
         {
             Request request = new Request
@@ -69,6 +104,17 @@ namespace View.Communication
             return (Trening)client.GetResponseResult();
         }
 
+        internal List<Clanarina> VratiClanarine(Clanarina clanarina)
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiClanarine,
+                RequestObject = clanarina
+            };
+            client.SendRequest(request);
+            return (List<Clanarina>)client.GetResponseResult();
+        }
+
         internal ClanKluba UcitajClanaKluba(ClanKluba clanKluba)
         {
             Request request = new Request
@@ -77,8 +123,7 @@ namespace View.Communication
                 RequestObject = clanKluba
             };
             client.SendRequest(request);
-            List<ClanKluba> lista = (List<ClanKluba>)client.GetResponseResult();
-            return lista[0];
+            return (ClanKluba)client.GetResponseResult();
         }
 
         internal List<ClanKluba> PretreziClana(ClanKluba clanKluba)

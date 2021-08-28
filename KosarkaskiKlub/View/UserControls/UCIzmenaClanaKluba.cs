@@ -29,7 +29,7 @@ namespace View.UserControls
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-            izmenaClanaKlubaController.UcitajClanaKluba(dgvClanoviKluba, txtId, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
+            izmenaClanaKlubaController.UcitajClanaKluba(dgvClanoviKluba, txtId, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa, btnSacuvaj);
             
         }
 
@@ -46,7 +46,7 @@ namespace View.UserControls
 
         private void dgvClanoviKluba_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            izmenaClanaKlubaController.UcitajClanaKluba(dgvClanoviKluba, txtId, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
+            izmenaClanaKlubaController.UcitajClanaKluba(dgvClanoviKluba, txtId, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa, btnSacuvaj);
         }
 
         private void UCIzmenaClanaKluba_Load(object sender, EventArgs e)

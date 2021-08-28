@@ -93,5 +93,10 @@ namespace View
         {
             mainController.OpenUCUnosPrisustva(this);
         }
+
+        private void prikazGrupeZaTreniranjeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainController.OpenUCPrikazGrupe(this);
+        }
     }
 }

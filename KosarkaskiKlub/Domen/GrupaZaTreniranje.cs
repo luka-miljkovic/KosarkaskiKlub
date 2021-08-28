@@ -14,7 +14,9 @@ namespace Domen
         public int GrupaId { get; set; }
         public string NazivGrupe { get; set; }
         public DateTime DatumFormiranja { get; set; }
+        [Browsable(false)]
         public DateTime DatumOd { get; set; }
+        [Browsable(false)]
         public DateTime DatumDo { get; set; }
         public string UzrastGrupe { get; set; }
         public Trener Trener { get; set; }
@@ -32,18 +34,20 @@ namespace Domen
         [Browsable(false)]
         public string IdName => "GrupaID";
         [Browsable(false)]
-        public string JoinCondition => "";
+        public string JoinCondition => "ON (GT.TrenerID = T.TrenerID)";
         [Browsable(false)]
-        public string JoinTable => "";
+        public string JoinTable => "JOIN Trener T";
         [Browsable(false)]
-        public string TableAlias => "";
+        public string TableAlias => "GT";
         [Browsable(false)]
         public object SelectValues => "*";
-
+        [Browsable(false)]
         public string WhereCondition => $"GrupaID={GrupaId}";
-
+        [Browsable(false)]
         public string GetUpdateValues => "";
+        [Browsable(false)]
         public string GCondition { get; set; }
+        [Browsable(false)]
         public string GeneralCondition => $"{GCondition}";
 
         [Browsable(false)]
@@ -57,7 +61,16 @@ namespace Domen
                     GrupaId = (int)reader[0],
                     NazivGrupe = (string)reader[1],
                     DatumFormiranja = Convert.ToDateTime(reader[2]),
-                    UzrastGrupe = (string)reader[3]
+                    UzrastGrupe = (string)reader[3],
+                    Trener = new Trener
+                    {
+                        TrenerId = (int)reader[4],
+                        ImePrezime = (string)reader[6],
+                        KorisnickoIme = (string)reader[7],
+                        Lozinka = (string)reader[8],
+                        DatumZaposlenja = Convert.ToDateTime(reader[9]),
+                        DatumRodjenja = Convert.ToDateTime(reader[10])
+                    }
                 });
             }
             return result;

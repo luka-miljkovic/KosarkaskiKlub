@@ -56,6 +56,7 @@
     <Compile Include="Controller\IzmenaTreningaController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Controller\PrikazGrupeController.cs" />
     <Compile Include="Controller\UnosPrisustvaController.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Exceptions\SystemNotFoundException.cs" />
@@ -106,6 +107,12 @@
     <Compile Include="UserControls\UCIzmenaTreninga.Designer.cs">
       <DependentUpon>UCIzmenaTreninga.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCPrikazGrupeZaTreniranje.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCPrikazGrupeZaTreniranje.Designer.cs">
+      <DependentUpon>UCPrikazGrupeZaTreniranje.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCUnosPrisustva.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +150,9 @@
     <EmbeddedResource Include="UserControls\UCIzmenaTreninga.resx">
       <DependentUpon>UCIzmenaTreninga.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCPrikazGrupeZaTreniranje.resx">
+      <DependentUpon>UCPrikazGrupeZaTreniranje.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCUnosPrisustva.resx">
       <DependentUpon>UCUnosPrisustva.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,7 +180,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\undraw_basketball_agx4.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

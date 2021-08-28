@@ -133,9 +133,37 @@ namespace Controller
             so.ExecuteTemplate(requestObject);
         }
 
-        public List<ClanKluba> UcitajClanaaKluba(ClanKluba requestObject)
+        public ClanKluba UcitajClanaaKluba(ClanKluba requestObject)
         {
             UcitajClanaKlubaSO so = new UcitajClanaKlubaSO();
+            so.ExecuteTemplate(requestObject);
+            return so.Result;
+        }
+
+        public object VratiPrisustva(Prisustvo requestObject)
+        {
+            VratiPrisustvaSO so = new VratiPrisustvaSO();
+            so.ExecuteTemplate(requestObject);
+            return so.Result;
+        }
+
+        public List<Clanarina> UcitajClanarinu(Clanarina requestObject)
+        {
+            VratiClanarineSO so = new VratiClanarineSO();
+            so.ExecuteTemplate(requestObject);
+            return so.Result;
+        }
+
+        public List<GrupaZaTreniranje> PretraziGrupu(GrupaZaTreniranje requestObject)
+        {
+            PretraziGrupeSO so = new PretraziGrupeSO();
+            so.ExecuteTemplate(requestObject);
+            return so.Result;
+        }
+
+        public GrupaZaTreniranje UcitajGrupu(GrupaZaTreniranje requestObject)
+        {
+            UcitajGrupuSO so = new UcitajGrupuSO();
             so.ExecuteTemplate(requestObject);
             return so.Result;
         }

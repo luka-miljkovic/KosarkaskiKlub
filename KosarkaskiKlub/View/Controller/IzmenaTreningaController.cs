@@ -13,12 +13,36 @@ namespace View.Controller
     public class IzmenaTreningaController
     {
         Trening trening = new Trening();
-        internal void Pretrazitreninge(DateTimePicker dtpDatumTreninga, DataGridView dgvTreninzi)
+        internal void Pretrazitreninge(DateTimePicker dtpDatumTreninga, TextBox txtGrupaPretraga, DataGridView dgvTreninzi, CheckBox cbDatum, CheckBox cbNaziv)
         {
-            Trening trening = new Trening
+            if(!cbNaziv.Checked && !cbDatum.Checked)
             {
-                GCondition = $"DatumTreninga='{dtpDatumTreninga.Value.Date}'"
-            };
+                MessageBox.Show("Niste cekirali ni jedan kriterijum pretrage");
+                return; 
+            }
+
+            if(cbNaziv.Checked && !UserControlHelpers.EmptyFieldValidation(txtGrupaPretraga))
+            {
+                MessageBox.Show("Niste uneli naziv grupe");
+                return;
+            }
+
+            Trening trening = new Trening();
+
+            if(cbNaziv.Checked && cbDatum.Checked)
+            {
+                trening.GCondition = $"T.DatumTreninga='{dtpDatumTreninga.Value.Date}' and GT.NazivGrupe LIKE '{txtGrupaPretraga.Text}%'";
+            }
+
+            if (cbNaziv.Checked && !cbDatum.Checked)
+            {
+                trening.GCondition = $"GT.NazivGrupe LIKE '{txtGrupaPretraga.Text}%'";
+            }
+
+            if (!cbNaziv.Checked && cbDatum.Checked)
+            {
+                trening.GCondition = $"T.DatumTreninga='{dtpDatumTreninga.Value.Date}'";
+            }
 
             List<Trening> listaTreninga = Communication.Communication.Instance.PretraziTreninge(trening);
             
@@ -33,7 +57,7 @@ namespace View.Controller
             }
         }
 
-        internal void UcitajTrening(DataGridView dgvTreninzi, TextBox txtGrupa, TextBox txtVremeOd, TextBox txtVremeDo, DateTimePicker dtpDatumTreninga, TextBox txtDanTreninga, ComboBox cmbSale)
+        internal void UcitajTrening(DataGridView dgvTreninzi, TextBox txtGrupa, TextBox txtVremeOd, TextBox txtVremeDo, DateTimePicker dtpDatumTreninga, TextBox txtDanTreninga, ComboBox cmbSale, Button btnSacuvajIzmene)
         {
             try
             {
@@ -59,7 +83,18 @@ namespace View.Controller
                     dtpDatumTreninga.Value = trening.DatumTreninga;
                     string dan = Convert.ToString(trening.DatumTreninga.DayOfWeek);
                     txtDanTreninga.Text = dan;
-                    cmbSale.SelectedIndex = cmbSale.FindStringExact(trening.SalaZaTrening.ToString());
+                    cmbSale.SelectedIndex = VratiIndexSale(trening.SalaZaTrening);
+
+                    if(trening.GrupaZaTreniranje.Trener.TrenerId != MainCoordinator.Instance.Trener.TrenerId)
+                    {
+                        MessageBox.Show("Ne mozete vrsiti izmene za treninge koji ne pripadaju vasoj grupi");
+                        btnSacuvajIzmene.Enabled = false;
+                        txtVremeOd.Enabled = false;
+                        txtVremeDo.Enabled = false;
+                        dtpDatumTreninga.Enabled = false;
+                        cmbSale.Enabled = false;
+
+                    }
                 }
                         
                 
@@ -74,6 +109,8 @@ namespace View.Controller
         {
             if( !UserControlHelpers.EmptyFieldValidation(txtVremeOd) | 
                 !UserControlHelpers.EmptyFieldValidation(txtVremeDo) |
+                !UserControlHelpers.TimeValidation(txtVremeOd) |
+                !UserControlHelpers.TimeValidation(txtVremeDo) |
                 !UserControlHelpers.ComboBoxValidation(cmbSale))
             {
                 MessageBox.Show("Niste lepo popunili sva polja");
@@ -82,8 +119,6 @@ namespace View.Controller
 
             try
             {
-                
-
                 //GrupaZaTreniranje = (GrupaZaTreniranje)cmbGrupe.SelectedItem,
                 trening.VremeOd = (string)txtVremeOd.Text;
                 trening.VremeDo = (string)txtVremeDo.Text;
@@ -124,6 +159,32 @@ namespace View.Controller
             cmbSale.DataSource = Communication.Communication.Instance.VratiSale();
             cmbSale.SelectedIndex = -1;
             cmbSale.Text = "Izaberite salu";
+        }
+
+        private int VratiIndexGrupe(GrupaZaTreniranje grupaZaTreniranje)
+        {
+            List<GrupaZaTreniranje> lista = Communication.Communication.Instance.VratiGrupe();
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (lista[i].GrupaId == grupaZaTreniranje.GrupaId)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int VratiIndexSale(SalaZaTrening sala)
+        {
+            List<SalaZaTrening> lista = Communication.Communication.Instance.VratiSale();
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (lista[i].SalaZaTreningId == sala.SalaZaTreningId)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

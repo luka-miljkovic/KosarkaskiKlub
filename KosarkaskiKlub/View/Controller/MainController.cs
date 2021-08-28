@@ -38,5 +38,10 @@ namespace View.Controller
         {
             frmMain.SetPanel(new UCIzmenaTreninga(new IzmenaTreningaController()));
         }
+
+        internal void OpenUCPrikazGrupe(FrmMain frmMain)
+        {
+            frmMain.SetPanel(new UCPrikazGrupeZaTreniranje(new PrikazGrupeController()));
+        }
     }
 }

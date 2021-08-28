@@ -31,23 +31,47 @@ namespace View.UserControls
 
         private void btnDodajTrenong_Click(object sender, EventArgs e)
         {
-            grupaZaTreningController.DodajTrening(txtRBTreninga, cmbDanTreninga, txtVremeOd, txtVremeDo, cmbSale, dgvTreninzi, this);
         }
 
         private void UCGrupaZaTreniranje_Load(object sender, EventArgs e)
         {
             grupaZaTreningController.UcitajSale(cmbSale);
-            
+            if(listaTreninga == null || listaTreninga.Count == 0)
+            {
+                this.btnObrisiTrening.Enabled = false;
+            }
+            else
+            {
+                this.btnObrisiTrening.Enabled = true;
+
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            grupaZaTreningController.ObrisiTrening(dgvTreninzi, this);
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             grupaZaTreningController.SacuvajNovuGurpu(txtNazivGrupe, cmbUzrast, dtpDatumOd, dtpDatumDo, this);
+        }
+
+        private void btnDodajTrening_Click(object sender, EventArgs e)
+        {
+            grupaZaTreningController.DodajTrening(cmbDanTreninga, txtVremeOd, txtVremeDo, cmbSale, dgvTreninzi, this);
+
+        }
+
+        private void btnObrisiTrening_Click(object sender, EventArgs e)
+        {
+            grupaZaTreningController.ObrisiTrening(dgvTreninzi, this, btnObrisiTrening);
+
+        }
+
+        private void dgvTreninzi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnObrisiTrening.Enabled = true;
         }
     }
 }

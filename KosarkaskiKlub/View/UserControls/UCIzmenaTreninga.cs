@@ -23,12 +23,13 @@ namespace View.UserControls
 
         private void btnPretrazi_Click(object sender, EventArgs e)
         {
-            izmenaTreningaController.Pretrazitreninge(dtpDatumTreningaIzbor, dgvTreninzi);
+
+            izmenaTreningaController.Pretrazitreninge(dtpDatumTreningaIzbor, txtGrupaPretraga, dgvTreninzi, cbDatum, cbNaziv);
         }
 
         private void dgvTreninzi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            izmenaTreningaController.UcitajTrening(dgvTreninzi, txtGrupa, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale);
+            izmenaTreningaController.UcitajTrening(dgvTreninzi, txtGrupa, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale, btnSacuvajIzmene);
         }
 
         private void UCIzmenaTreninga_Load(object sender, EventArgs e)

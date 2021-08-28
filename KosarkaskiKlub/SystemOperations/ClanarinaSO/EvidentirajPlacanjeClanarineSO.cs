@@ -12,7 +12,8 @@ namespace SystemOperations.ClanKlubaSO
         protected override void ExecuteOperation(IEntity entity)
         {
             Clanarina clanarina = (Clanarina)entity;
-            clanarina.ClanarinaId = Repository.GetNewId(entity);
+            List<Clanarina> lista = Repository.GetAll(new Clanarina ()).Cast<Clanarina>().ToList();
+            clanarina.ClanarinaId = ((Repository.GetNewId(entity) == 1 &&(lista == null || lista.Count == 0) )? 1 : Repository.GetNewId(entity) + 1);
             //clanarina.ClanarinaId = 10;
             Repository.Save(clanarina);
         }

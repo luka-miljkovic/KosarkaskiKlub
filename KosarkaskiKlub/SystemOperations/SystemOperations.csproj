@@ -41,17 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClanKlubaSO\EvidentirajPlacanjeClanarineSO.cs" />
+    <Compile Include="ClanarinaSO\EvidentirajPlacanjeClanarineSO.cs" />
     <Compile Include="ClanKlubaSO\PretraziClanaSO.cs" />
     <Compile Include="ClanKlubaSO\SacuvajIzmeneClanaSO.cs" />
     <Compile Include="ClanKlubaSO\SacuvajNovogClanaSO.cs" />
     <Compile Include="ClanKlubaSO\UcitajClanaKlubaSO.cs" />
-    <Compile Include="GrupaZaTreniranjeSO\PretraziTreningeSO.cs" />
-    <Compile Include="GrupaZaTreniranjeSO\SacuvajIzmeneTreningaSO.cs" />
+    <Compile Include="ClanarinaSO\VratiClanarineSO.cs" />
+    <Compile Include="GrupaZaTreniranjeSO\PretraziGrupeSO.cs" />
+    <Compile Include="GrupaZaTreniranjeSO\UcitajGrupuSO.cs" />
+    <Compile Include="TreningSO\PretraziTreningeSO.cs" />
+    <Compile Include="TreningSO\SacuvajIzmeneTreningaSO.cs" />
     <Compile Include="GrupaZaTreniranjeSO\SacuvajNovuGrupuSO.cs" />
-    <Compile Include="GrupaZaTreniranjeSO\UcitajTreningSO.cs" />
+    <Compile Include="TreningSO\UcitajTreningSO.cs" />
     <Compile Include="GrupaZaTreniranjeSO\VratiSveGrupeSO.cs" />
     <Compile Include="PrisustvoSO\SacuvajPrisustvaSO.cs" />
+    <Compile Include="PrisustvoSO\VratiPrisustvaSO.cs" />
     <Compile Include="SalaZaTreningSO\VratiSveSaleSO.cs" />
     <Compile Include="SystemOperationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

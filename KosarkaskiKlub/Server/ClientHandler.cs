@@ -135,9 +135,20 @@ namespace Server
                     Controller.Controller.Instance.SacuvajIzmeneTreninga((Trening)request.RequestObject);
                     break;
                 case Operation.UcitajClanaKluba:
-                    response.Result = (List<ClanKluba>)Controller.Controller.Instance.UcitajClanaaKluba((ClanKluba)request.RequestObject);
+                    response.Result = (ClanKluba)Controller.Controller.Instance.UcitajClanaaKluba((ClanKluba)request.RequestObject);
                     break;
-
+                case Operation.VratiPrisustva:
+                    response.Result = Controller.Controller.Instance.VratiPrisustva((Prisustvo)request.RequestObject);
+                    break;
+                case Operation.VratiClanarine:
+                    response.Result = Controller.Controller.Instance.UcitajClanarinu((Clanarina)request.RequestObject);
+                    break;
+                case Operation.PretraziGrupe:
+                    response.Result = Controller.Controller.Instance.PretraziGrupu((GrupaZaTreniranje)request.RequestObject);
+                    break;
+                case Operation.UcitajGrupu:
+                    response.Result = Controller.Controller.Instance.UcitajGrupu((GrupaZaTreniranje)request.RequestObject);
+                    break;
                 default:
                     break;
             }

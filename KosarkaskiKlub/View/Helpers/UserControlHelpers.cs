@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -81,5 +82,22 @@ namespace View.Helpers
                 return true;
             }
         }
+
+        public static bool TimeValidation(TextBox txt)
+        {
+            Regex proveriVreme = new Regex(@"^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
+
+            if (!proveriVreme.IsMatch(txt.Text))
+            {
+                txt.BackColor = Color.LightCoral;
+                return false;
+            }
+            else
+            {
+                txt.BackColor = Color.White;
+                return true;
+            }
+        }
+
     }
 }

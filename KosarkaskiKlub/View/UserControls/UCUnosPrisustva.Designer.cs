@@ -36,6 +36,10 @@
             this.btnSacuvajPrisustva = new System.Windows.Forms.Button();
             this.dtpDatumTreninga = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtNazivGrupe = new System.Windows.Forms.TextBox();
+            this.cbDatum = new System.Windows.Forms.CheckBox();
+            this.cbNaziv = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTreninzi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +65,7 @@
             // 
             // btnPretraziTreninge
             // 
-            this.btnPretraziTreninge.Location = new System.Drawing.Point(44, 102);
+            this.btnPretraziTreninge.Location = new System.Drawing.Point(44, 146);
             this.btnPretraziTreninge.Name = "btnPretraziTreninge";
             this.btnPretraziTreninge.Size = new System.Drawing.Size(83, 27);
             this.btnPretraziTreninge.TabIndex = 3;
@@ -76,7 +80,7 @@
             this.dgvTreninzi.AllowUserToResizeColumns = false;
             this.dgvTreninzi.AllowUserToResizeRows = false;
             this.dgvTreninzi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTreninzi.Location = new System.Drawing.Point(44, 145);
+            this.dgvTreninzi.Location = new System.Drawing.Point(44, 198);
             this.dgvTreninzi.Name = "dgvTreninzi";
             this.dgvTreninzi.ReadOnly = true;
             this.dgvTreninzi.RowHeadersVisible = false;
@@ -94,7 +98,7 @@
             this.dgvClanovi.AllowUserToResizeColumns = false;
             this.dgvClanovi.AllowUserToResizeRows = false;
             this.dgvClanovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClanovi.Location = new System.Drawing.Point(44, 356);
+            this.dgvClanovi.Location = new System.Drawing.Point(44, 401);
             this.dgvClanovi.Name = "dgvClanovi";
             this.dgvClanovi.RowHeadersVisible = false;
             this.dgvClanovi.RowHeadersWidth = 51;
@@ -104,7 +108,7 @@
             // 
             // btnSacuvajPrisustva
             // 
-            this.btnSacuvajPrisustva.Location = new System.Drawing.Point(44, 546);
+            this.btnSacuvajPrisustva.Location = new System.Drawing.Point(44, 581);
             this.btnSacuvajPrisustva.Name = "btnSacuvajPrisustva";
             this.btnSacuvajPrisustva.Size = new System.Drawing.Size(152, 31);
             this.btnSacuvajPrisustva.TabIndex = 6;
@@ -123,16 +127,56 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 309);
+            this.label3.Location = new System.Drawing.Point(41, 361);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "Prikaz članova kluba:";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(41, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(138, 17);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Unesite naziv grupe:";
+            // 
+            // txtNazivGrupe
+            // 
+            this.txtNazivGrupe.Location = new System.Drawing.Point(214, 109);
+            this.txtNazivGrupe.Name = "txtNazivGrupe";
+            this.txtNazivGrupe.Size = new System.Drawing.Size(140, 22);
+            this.txtNazivGrupe.TabIndex = 11;
+            // 
+            // cbDatum
+            // 
+            this.cbDatum.AutoSize = true;
+            this.cbDatum.Location = new System.Drawing.Point(389, 75);
+            this.cbDatum.Name = "cbDatum";
+            this.cbDatum.Size = new System.Drawing.Size(252, 21);
+            this.cbDatum.TabIndex = 12;
+            this.cbDatum.Text = "Uključite datum treninga u pretragu";
+            this.cbDatum.UseVisualStyleBackColor = true;
+            // 
+            // cbNaziv
+            // 
+            this.cbNaziv.AutoSize = true;
+            this.cbNaziv.Location = new System.Drawing.Point(389, 108);
+            this.cbNaziv.Name = "cbNaziv";
+            this.cbNaziv.Size = new System.Drawing.Size(231, 21);
+            this.cbNaziv.TabIndex = 13;
+            this.cbNaziv.Text = "Uključite naziv grupe u pretragu";
+            this.cbNaziv.UseVisualStyleBackColor = true;
+            // 
             // UCUnosPrisustva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbNaziv);
+            this.Controls.Add(this.cbDatum);
+            this.Controls.Add(this.txtNazivGrupe);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpDatumTreninga);
             this.Controls.Add(this.btnSacuvajPrisustva);
@@ -160,5 +204,9 @@
         private System.Windows.Forms.Button btnSacuvajPrisustva;
         private System.Windows.Forms.DateTimePicker dtpDatumTreninga;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtNazivGrupe;
+        private System.Windows.Forms.CheckBox cbDatum;
+        private System.Windows.Forms.CheckBox cbNaziv;
     }
 }

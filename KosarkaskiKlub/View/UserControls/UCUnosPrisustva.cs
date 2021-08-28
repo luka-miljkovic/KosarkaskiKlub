@@ -24,7 +24,7 @@ namespace View.UserControls
 
         private void btnPretraziTreninge_Click(object sender, EventArgs e)
         {
-            unosPrisustvaController.PretraziTreninge(dtpDatumTreninga, dgvTreninzi);
+            unosPrisustvaController.PretraziTreninge(dtpDatumTreninga, dgvTreninzi, txtNazivGrupe, cbDatum, cbNaziv);
         }
 
         private void btnSacuvajPrisustva_Click(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace View.UserControls
 
         private void dgvTreninzi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            unosPrisustvaController.PrikaziClanove(dgvTreninzi, dgvClanovi);
+            unosPrisustvaController.PrikaziClanove(dgvTreninzi, dgvClanovi, btnSacuvajPrisustva);
         }
     }
 }

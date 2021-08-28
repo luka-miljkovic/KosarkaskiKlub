@@ -20,6 +20,10 @@ namespace Common
         SacuvajIzmeneClana,
         UcitajTrening,
         SacuvajIzmeneTreninga,
-        UcitajClanaKluba
+        UcitajClanaKluba,
+        VratiPrisustva,
+        VratiClanarine,
+        PretraziGrupe,
+        UcitajGrupu
     }
 }

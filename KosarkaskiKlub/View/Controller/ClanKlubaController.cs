@@ -12,11 +12,25 @@ namespace View.Controller
 {
     public class ClanKlubaController
     {
-        internal void UcitajGrupe(ComboBox cmbGrupa)
+        internal void UcitajGrupe(ComboBox cmbGrupa, Button btnSacuvaj)
         {
-            cmbGrupa.DataSource = Communication.Communication.Instance.VratiGrupe();
-            cmbGrupa.SelectedIndex = -1;
-            cmbGrupa.Text = "Izaberite grupu za treniranje";
+            GrupaZaTreniranje grupa = new GrupaZaTreniranje
+            {
+                GCondition = $"T.TrenerID={MainCoordinator.Instance.Trener.TrenerId}"
+            };
+            List<GrupaZaTreniranje> grupe = Communication.Communication.Instance.PretraziGrupe(grupa);
+            if(grupe == null || grupe.Count == 0)
+            {
+                MessageBox.Show("Ne postoji grupa za treniranje koju vi vodite!");
+                btnSacuvaj.Enabled = false;
+                return;
+            }
+            else
+            {
+                cmbGrupa.DataSource = grupe;
+                cmbGrupa.SelectedIndex = -1;
+            }
+
         }
 
         internal void SacuvajClanaKluba(TextBox txtImePrezime, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtSkola, ComboBox cmbGrupa)
@@ -32,9 +46,7 @@ namespace View.Controller
             {
                 ImePrezime = txtImePrezime.Text,
                 DatumRodjenja = dtpDatumRodjenja.Value.Date,
-                //DatumRodjenja = Convert.ToDateTime($"{dtpDatumRodjenja.Value.Day}.{dtpDatumRodjenja.Value.Month}.{dtpDatumRodjenja.Value.Year}"),
-                //DatumUpisa = dtpDatumUpisa.Value.Date,
-                DatumUpisa = Convert.ToDateTime("12.12.2020"),
+                DatumUpisa = dtpDatumUpisa.Value.Date,
                 NazivSkole = txtSkola.Text,
                 GrupaZaTreniranje = (GrupaZaTreniranje)cmbGrupa.SelectedItem
             };

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.grupaZaTreniranjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unosNoveGrupeZaTreniranjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,11 @@
             this.prisustvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.evidencijaPrisustvaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.prikazGrupeZaTreniranjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -51,7 +56,7 @@
             this.prisustvoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1248, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1269, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -59,7 +64,8 @@
             // 
             this.grupaZaTreniranjeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.unosNoveGrupeZaTreniranjeToolStripMenuItem,
-            this.izmenaTreningaToolStripMenuItem});
+            this.izmenaTreningaToolStripMenuItem,
+            this.prikazGrupeZaTreniranjeToolStripMenuItem});
             this.grupaZaTreniranjeToolStripMenuItem.Name = "grupaZaTreniranjeToolStripMenuItem";
             this.grupaZaTreniranjeToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.grupaZaTreniranjeToolStripMenuItem.Text = "Grupa za treniranje";
@@ -126,22 +132,42 @@
             // 
             // pnlMain
             // 
+            this.pnlMain.Controls.Add(this.pictureBox1);
             this.pnlMain.Location = new System.Drawing.Point(0, 31);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1101, 1024);
+            this.pnlMain.Size = new System.Drawing.Size(1253, 1021);
             this.pnlMain.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1250, 1018);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // prikazGrupeZaTreniranjeToolStripMenuItem
+            // 
+            this.prikazGrupeZaTreniranjeToolStripMenuItem.Name = "prikazGrupeZaTreniranjeToolStripMenuItem";
+            this.prikazGrupeZaTreniranjeToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
+            this.prikazGrupeZaTreniranjeToolStripMenuItem.Text = "Prikaz grupe za treniranje";
+            this.prikazGrupeZaTreniranjeToolStripMenuItem.Click += new System.EventHandler(this.prikazGrupeZaTreniranjeToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1248, 1055);
+            this.ClientSize = new System.Drawing.Size(1269, 1055);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FrmMain";
             this.Text = "FrmMain";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +186,7 @@
         private System.Windows.Forms.ToolStripMenuItem prisustvoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem evidencijaPrisustvaToolStripMenuItem;
         private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem prikazGrupeZaTreniranjeToolStripMenuItem;
     }
 }

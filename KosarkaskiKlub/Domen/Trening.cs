@@ -13,10 +13,10 @@ namespace Domen
     {
         public GrupaZaTreniranje GrupaZaTreniranje { get; set; }
         public int TreningId { get; set; }
+        public DateTime DatumTreninga { get; set; }
+        public string DanTreninga { get; set; }
         public string VremeOd { get; set; }
         public string VremeDo { get; set; }
-        public string DanTreninga { get; set; }
-        public DateTime DatumTreninga { get; set; }
         public SalaZaTrening SalaZaTrening { get; set; }
 
         [Browsable(false)]
@@ -26,11 +26,11 @@ namespace Domen
         [Browsable(false)]
         public string IdName => "TreningID";
         [Browsable(false)]
-        public string JoinCondition => "";
+        public string JoinCondition => "ON (T.GrupaZaTreniranjeID = GT.GrupaID)";
         [Browsable(false)]
-        public string JoinTable => "";
+        public string JoinTable => "JOIN GrupaZaTreniranje GT";
         [Browsable(false)]
-        public string TableAlias => "";
+        public string TableAlias => "T";
         [Browsable(false)]
         public object SelectValues => "*";
         [Browsable(false)]
@@ -53,7 +53,11 @@ namespace Domen
                     TreningId = (int)reader[0],
                     GrupaZaTreniranje = new GrupaZaTreniranje
                     {
-                        GrupaId = (int)reader[1]
+                        GrupaId = (int)reader[1],
+                        Trener = new Trener
+                        {
+                            TrenerId = (int)reader[11]
+                        }
                     },
                     VremeOd = (string)reader[2],
                     VremeDo = (string)reader[3],

@@ -39,9 +39,9 @@ namespace View.Controller
             }
         }
 
-        internal void SacuvajUplatu(DateTimePicker dtpDatumUplate, TextBox txtMesec, TextBox txtGodina, TextBox txtIznos, DataGridView dgvClanKluba)
+        internal void SacuvajUplatu(DateTimePicker dtpDatumUplate, ComboBox cmbMesec, TextBox txtGodina, TextBox txtIznos, DataGridView dgvClanKluba, DataGridView dgvClanarine)
         {
-            if(!UserControlHelpers.IntValidation(txtMesec) |
+            if(!UserControlHelpers.ComboBoxValidation(cmbMesec) |
                 !UserControlHelpers.IntValidation(txtGodina) |
                 !UserControlHelpers.DoubleValidation(txtIznos)/* |
                 dgvClanKluba.CurrentRow != null*/)
@@ -52,17 +52,34 @@ namespace View.Controller
             Clanarina clanarina = new Clanarina
             {
                 ClanKluba = (ClanKluba)dgvClanKluba.CurrentRow.DataBoundItem,
-                Mesec = Convert.ToInt32(txtMesec.Text),
+                Mesec = (string)cmbMesec.SelectedItem,
                 Godina = Convert.ToInt32(txtGodina.Text),
                 DatumIsplate = dtpDatumUplate.Value.Date,
-                Iznos = Convert.ToDouble(txtIznos.Text)
+                Iznos = Double.Parse(txtIznos.Text, System.Globalization.NumberStyles.AllowDecimalPoint)
             };
 
-            Communication.Communication.Instance.EvidentirajPlacanjeClanarine(clanarina);
-            MessageBox.Show("Clanarina je uspesno evidentirana");
+            clanarina.GCondition = $"ClanKlubaID={clanarina.ClanKluba.ClanKlubaId} and Mesec='{clanarina.Mesec}' and Godina={clanarina.Godina}";
+
+            List<Clanarina> lista = Communication.Communication.Instance.VratiClanarine(clanarina);
+
+            if(lista == null || lista.Count == 0)
+            {
+                Communication.Communication.Instance.EvidentirajPlacanjeClanarine(clanarina);
+                MessageBox.Show("Clanarina je uspesno evidentirana");
+            }
+            else
+            {
+                MessageBox.Show("Vec ste uneli clanarinu");
+            }
+
+            dtpDatumUplate.Value = DateTime.Now;
+            cmbMesec.SelectedIndex = -1;
+            txtGodina.Text = "";
+            txtIznos.Text = "";
+            dgvClanarine.DataSource = null;
         }
 
-        internal void UcitajClana(DataGridView dgvClanoviKluba, TextBox txtIdClanaKluba, TextBox txtImePrezime)
+        internal void UcitajClana(DataGridView dgvClanoviKluba, DataGridView dgvClanarine, TextBox txtIdClanaKluba, TextBox txtImePrezime, Button btnSacuvajUplatu)
         {
             try
             {
@@ -81,6 +98,26 @@ namespace View.Controller
                 {
                     txtIdClanaKluba.Text = Convert.ToString(clanKluba.ClanKlubaId);
                     txtImePrezime.Text = clanKluba.ImePrezime;
+
+                    Clanarina clanarina = new Clanarina
+                    {
+                        GCondition = $"ClanKlubaID={clanKluba.ClanKlubaId}"
+                    };
+
+                    dgvClanarine.DataSource = new List<Clanarina>();
+                    List<Clanarina> listaClanarina = Communication.Communication.Instance.VratiClanarine(clanarina);
+                    dgvClanarine.Columns["ClanKluba"].Visible = false;
+                    dgvClanarine.Columns["ClanarinaId"].Visible = false;
+                    dgvClanarine.DataSource = listaClanarina;
+
+                    if (clanKluba.GrupaZaTreniranje.Trener.TrenerId != MainCoordinator.Instance.Trener.TrenerId)
+                    {
+                        MessageBox.Show("Ne mozete vrsiti izmene za clana koji nije u vasoj grupi");
+                        btnSacuvajUplatu.Enabled = false;
+  
+
+                    }
+
                 }
             }
             catch (SystemOperationException ex)
