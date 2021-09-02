@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using View.Helpers;
 using View.Communication;
 using View.Exceptions;
+using System.Drawing;
 
 namespace View.Controller
 {
@@ -20,9 +21,16 @@ namespace View.Controller
 
         internal void UcitajSale(ComboBox cmbSale)
         {
-            cmbSale.DataSource = Communication.Communication.Instance.VratiSale();
-            cmbSale.SelectedIndex = -1;
-            cmbSale.Text = "Izaberite Salu";
+            try
+            {
+                cmbSale.DataSource = Communication.Communication.Instance.VratiSale();
+                cmbSale.SelectedIndex = -1;
+                cmbSale.Text = "Izaberite Salu";
+            }
+            catch (SystemOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         internal void DodajTrening(ComboBox cmbDanTreninga, TextBox txtVremeOd, TextBox txtVremeDo, ComboBox cmbSale, DataGridView dgvTreninzi, UCGrupaZaTreniranje uCGrupaZaTreniranje)
@@ -34,8 +42,32 @@ namespace View.Controller
                 !UserControlHelpers.ComboBoxValidation(cmbDanTreninga) |
                 !UserControlHelpers.ComboBoxValidation(cmbSale))
             {
+                MessageBox.Show("Niste uneli sva polja korektno");
                 return;
             }
+
+            string[] vremeOd = txtVremeOd.Text.Split(':');
+            string[] vremeDo = txtVremeDo.Text.Split(':');
+            int satOd = int.Parse(vremeOd[0]);
+            int satDo = int.Parse(vremeDo[0]);
+            int minOd = int.Parse(vremeOd[1]);
+            int minDo = int.Parse(vremeDo[1]);
+
+            if(satOd > satDo)
+            {
+                MessageBox.Show("Vreme pocetka treninga mora biti manje od vremena zavrsetka treninga");
+                txtVremeOd.BackColor = Color.LightCoral;
+                txtVremeDo.BackColor = Color.LightCoral;
+                return;
+            }
+            if(satOd == satDo && minOd >= minDo)
+            {
+                MessageBox.Show("Vreme pocetka treninga mora biti manje od vremena zavrsetka treninga");
+                txtVremeOd.BackColor = Color.LightCoral;
+                txtVremeDo.BackColor = Color.LightCoral;
+                return;
+            }
+
             String danTreninga = "";
             switch (cmbDanTreninga.Text)
             {
@@ -52,7 +84,7 @@ namespace View.Controller
                     danTreninga = "Thursday";
                     break;
                 case "petak":
-                    danTreninga = "Monday";
+                    danTreninga = "Friday";
                     break;
                 case "subota":
                     danTreninga = "Saturday";
@@ -90,21 +122,29 @@ namespace View.Controller
 
                 uCGrupaZaTreniranje.listaTreninga.Remove((Trening)selectedRow.DataBoundItem);
             }
-            if (uCGrupaZaTreniranje.listaTreninga == null || uCGrupaZaTreniranje.listaTreninga.Count == 0)
-            {
-                btnObrisiTrening.Enabled = false;
-            }
+            //if (uCGrupaZaTreniranje.listaTreninga == null || uCGrupaZaTreniranje.listaTreninga.Count == 0)
+            //{
+            //    btnObrisiTrening.Enabled = false;
+            //}
         }
 
         internal void SacuvajNovuGurpu(TextBox txtNazivGrupe, ComboBox cmbUzrast, DateTimePicker dtpDatumOd, DateTimePicker dtpDatumDo, UCGrupaZaTreniranje uCGrupaZaTreniranje)
         {
-            if(!UserControlHelpers.EmptyFieldValidation(txtNazivGrupe)|
+
+            if (!UserControlHelpers.EmptyFieldValidation(txtNazivGrupe)|
                !UserControlHelpers.ComboBoxValidation(cmbUzrast) |
                 uCGrupaZaTreniranje.listaTreninga.Count() == 0)
             {
                 MessageBox.Show("Niste lepo popunili sva polja!");
                 return;
             }
+
+            if(dtpDatumOd.Value.Date >= dtpDatumDo.Value.Date)
+            {
+                MessageBox.Show("Datum od kada pocinju treninzi mora biti manji od datuma kada se treninzi zavrsavaju!");
+                return;
+            }
+
             try
             {
                 GrupaZaTreniranje grupa = new GrupaZaTreniranje
@@ -118,16 +158,16 @@ namespace View.Controller
                     Trener = MainCoordinator.Instance.Trener
                 };
                 Communication.Communication.Instance.SacuvajGrupu(grupa);
-                MessageBox.Show("Grupa je uspesno sacuvana");
+                MessageBox.Show("Nova grupa za treniranje je uspesno sacuvana");
                 txtNazivGrupe.Text = "";
                 dtpDatumOd.Value = DateTime.Now;
                 dtpDatumDo.Value = DateTime.Now;
                 cmbUzrast.SelectedIndex = -1;
                 uCGrupaZaTreniranje.listaTreninga.Clear();
             }
-            catch (SystemOperationException ex)
+            catch (SystemOperationException)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Greska prilikom unosa nove grupe za treniranje");
             }
 
             

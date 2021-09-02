@@ -31,5 +31,11 @@ namespace View.UserControls
 
             prikazTreningaController.UcitajGrupu(dgvGrupe, dgvClanovi, dgvTreninzi, txtIdGrupe, txtNazivGrupe, txtDatumFormiranja, txtUzrast, txtTrener);
         }
+
+        private void UCPrikazGrupeZaTreniranje_Load(object sender, EventArgs e)
+        {
+            
+
+        }
     }
 }

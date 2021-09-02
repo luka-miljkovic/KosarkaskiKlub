@@ -19,7 +19,6 @@ namespace View.UserControls
         {
             InitializeComponent();
             this.unosPrisustvaController = unosPrisustvaController;
-            this.dtpDatumTreninga.Value = Convert.ToDateTime("10.10.2020");
         }
 
         private void btnPretraziTreninge_Click(object sender, EventArgs e)
@@ -29,12 +28,37 @@ namespace View.UserControls
 
         private void btnSacuvajPrisustva_Click(object sender, EventArgs e)
         {
-            unosPrisustvaController.SacuvajPrisustva(dgvClanovi);
+            unosPrisustvaController.SacuvajPrisustva(dgvClanovi, txtDatumTreninga, txtVremeDo, txtGrupa, lblPrisustvo);
         }
 
         private void dgvTreninzi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            unosPrisustvaController.PrikaziClanove(dgvTreninzi, dgvClanovi, btnSacuvajPrisustva);
+            unosPrisustvaController.UcitajTreningIPrisustva(dgvTreninzi, dgvClanovi, btnSacuvajPrisustva, txtDatumTreninga, txtVremeDo, txtGrupa, lblPrisustvo);
+        }
+
+        private void UCUnosPrisustva_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDatumTreninga_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtVremeOd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGrupa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtVremeDo_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

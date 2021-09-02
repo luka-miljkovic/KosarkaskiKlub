@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SystemOperations.TrenerSO
 {
-    public class LoginSO : SystemOperationBase
+    public class PrijaviTreneraSO : SystemOperationBase
     {
         public Trener Result { get; private set; }
         protected override void ExecuteOperation(IEntity entity)

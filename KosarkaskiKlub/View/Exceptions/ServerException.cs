@@ -8,7 +8,7 @@ namespace View.Exceptions
 {
     public class ServerException : Exception
     {
-        public ServerException() : base("Server error!")
+        public ServerException() : base("Greska prilikom povezivanja na server")
         {
         }
 

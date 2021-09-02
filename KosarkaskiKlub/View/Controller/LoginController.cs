@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,9 +20,9 @@ namespace View.Controller
                 Communication.Communication.Instance.Connect();
                 return true;
             }
-            catch (Exception)
+            catch (SocketException)
             {
-                MessageBox.Show("Greska pri povezivanju sa serverom");
+                MessageBox.Show("Greska prilikom povezivanja na server");
                 return false;
             }
         }
@@ -35,9 +36,19 @@ namespace View.Controller
             }
             try
             {
-                Trener t = Communication.Communication.Instance.Login(txtKorisnickoIme.Text, txtLozinka.Text);
+                Trener t = new Trener
+                {
+                    KorisnickoIme = txtKorisnickoIme.Text,
+                    Lozinka = txtLozinka.Text
+                };
+                t = Communication.Communication.Instance.Login(t);
                 if(t != null)
                 {
+                    //if (t.VecUlogovan)
+                    //{
+                    //    MessageBox.Show("Vec ste ulogovani na sistem!");
+                    //    return;
+                    //}
                     MainCoordinator.Instance.Trener = t;
                     MessageBox.Show("Uspesno ste se prijavili");
                     MainCoordinator.Instance.OpenMainForm();
@@ -51,8 +62,7 @@ namespace View.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "ovde");
-                //throw;
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -39,10 +39,10 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(95, 91);
+            this.label1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(246, 178);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 17);
+            this.label1.Size = new System.Drawing.Size(136, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Korisničko ime:";
             // 
@@ -50,37 +50,39 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(95, 123);
+            this.label2.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(246, 210);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.Size = new System.Drawing.Size(80, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Lozinka:";
             // 
             // txtKorisnickoIme
             // 
             this.txtKorisnickoIme.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(246, 87);
+            this.txtKorisnickoIme.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(397, 170);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
-            this.txtKorisnickoIme.Size = new System.Drawing.Size(173, 22);
+            this.txtKorisnickoIme.Size = new System.Drawing.Size(173, 32);
             this.txtKorisnickoIme.TabIndex = 2;
             // 
             // txtLozinka
             // 
             this.txtLozinka.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtLozinka.Location = new System.Drawing.Point(246, 119);
+            this.txtLozinka.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLozinka.Location = new System.Drawing.Point(397, 206);
             this.txtLozinka.Name = "txtLozinka";
             this.txtLozinka.PasswordChar = '*';
-            this.txtLozinka.Size = new System.Drawing.Size(173, 22);
+            this.txtLozinka.Size = new System.Drawing.Size(173, 32);
             this.txtLozinka.TabIndex = 3;
             // 
             // btnPrijaviSe
             // 
             this.btnPrijaviSe.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPrijaviSe.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrijaviSe.Location = new System.Drawing.Point(246, 168);
+            this.btnPrijaviSe.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrijaviSe.Location = new System.Drawing.Point(397, 255);
             this.btnPrijaviSe.Name = "btnPrijaviSe";
-            this.btnPrijaviSe.Size = new System.Drawing.Size(173, 30);
+            this.btnPrijaviSe.Size = new System.Drawing.Size(173, 33);
             this.btnPrijaviSe.TabIndex = 4;
             this.btnPrijaviSe.Text = "Prijavi se";
             this.btnPrijaviSe.UseVisualStyleBackColor = true;
@@ -90,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 326);
+            this.ClientSize = new System.Drawing.Size(875, 519);
             this.Controls.Add(this.btnPrijaviSe);
             this.Controls.Add(this.txtLozinka);
             this.Controls.Add(this.txtKorisnickoIme);

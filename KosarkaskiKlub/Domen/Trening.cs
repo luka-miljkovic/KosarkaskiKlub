@@ -22,7 +22,7 @@ namespace Domen
         [Browsable(false)]
         public string TableName => "Trening";
         [Browsable(false)]
-        public string InsertValues => $"{TreningId}, {GrupaZaTreniranje.GrupaId}, '{VremeOd}', '{VremeDo}', '{DatumTreninga}', '{DanTreninga}', {SalaZaTrening.SalaZaTreningId}";
+        public string InsertValues => $"{GrupaZaTreniranje.GrupaId}, '{VremeOd}', '{VremeDo}', '{DatumTreninga}', '{DanTreninga}', {SalaZaTrening.SalaZaTreningId}";
         [Browsable(false)]
         public string IdName => "TreningID";
         [Browsable(false)]

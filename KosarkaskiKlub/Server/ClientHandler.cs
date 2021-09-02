@@ -87,12 +87,11 @@ namespace Server
                         {
                             if(t.KorisnickoIme == trener.KorisnickoIme && t.Lozinka == trener.Lozinka)
                             {
-                                //System.Windows.Forms.MessageBox.Show("Vec ste ulogovani!");
-                                trener = null;
+                                trener.VecUlogovan = true;
                                 break;
                             }
                         }
-                        if(trener != null)
+                        if(!trener.VecUlogovan)
                         {
                             ulogovanTrener = trener;
                             treneri.Add(ulogovanTrener);

@@ -59,10 +59,11 @@ namespace View.Controller
             {
                 MessageBox.Show("Prikaz treninga");
                 dgvTreninzi.DataSource = listaTreninga;
+                dgvTreninzi.Columns["TreningId"].Visible = false;
             }
         }
 
-        internal void PrikaziClanove(DataGridView dgvTreninzi, DataGridView dgvClanovi, Button btnSacuvaj)
+        internal void UcitajTreningIPrisustva(DataGridView dgvTreninzi, DataGridView dgvClanovi, Button btnSacuvaj, TextBox txtDatumTreninga, TextBox txtVremeDo, TextBox txtGrupa, Label lblPrisustvo)
         {
             if (dgvTreninzi.CurrentRow == null)
             {
@@ -70,7 +71,22 @@ namespace View.Controller
                 return;
             }
             DataGridViewRow selectedRow = dgvTreninzi.SelectedCells[0].OwningRow;
-            Trening t = (Trening)selectedRow.DataBoundItem;
+            Trening t = new Trening
+            {
+                GCondition = $"TreningID={((Trening)selectedRow.DataBoundItem).TreningId} and GrupaZaTreniranjeID={((Trening)selectedRow.DataBoundItem).GrupaZaTreniranje.GrupaId}"
+            };
+
+            t = Communication.Communication.Instance.UcitajTrening(t);
+
+            if(t == null)
+            {
+                MessageBox.Show("Nije moguce ucitati trening");
+                return;
+            }
+
+            txtDatumTreninga.Text = $"{Convert.ToString(t.DatumTreninga.Day)}.{Convert.ToString(t.DatumTreninga.Month)}.{Convert.ToString(t.DatumTreninga.Year)}.";
+            txtVremeDo.Text = $"{t.VremeOd} - {t.VremeDo}";
+            txtGrupa.Text = t.GrupaZaTreniranje.ToString();
 
             if (t.GrupaZaTreniranje.Trener.TrenerId != MainCoordinator.Instance.Trener.TrenerId)
             {
@@ -79,7 +95,12 @@ namespace View.Controller
 
             }
 
-            List<Prisustvo> vecPostoje = Communication.Communication.Instance.VratiPrisustva(new Prisustvo { Trening = t });
+            Prisustvo prisustvo = new Prisustvo
+            {
+                GCondition = $"t.TreningID = {t.TreningId} and t.GrupaZaTreniranjeID = {t.GrupaZaTreniranje.GrupaId}"
+            };
+
+            List<Prisustvo> vecPostoje = Communication.Communication.Instance.VratiPrisustva(prisustvo);
 
             if(vecPostoje == null || vecPostoje.Count == 0)
             {
@@ -117,6 +138,7 @@ namespace View.Controller
             else
             {
                 MessageBox.Show("Prisustva za ovaj trening su vec unesena");
+                lblPrisustvo.Text = "Prikaz prisustva:";
                 dgvClanovi.DataSource = vecPostoje;
                 dgvClanovi.ReadOnly = true;
                 dgvClanovi.Enabled = false;
@@ -127,7 +149,7 @@ namespace View.Controller
 
         }
 
-        internal void SacuvajPrisustva(DataGridView dgvClanovi)
+        internal void SacuvajPrisustva(DataGridView dgvClanovi, TextBox txtDatumTreninga, TextBox txtVremeDo, TextBox txtGrupa, Label lblPrisustvo)
         {
             if (prisustva == null || prisustva.Count() == 0)
             {
@@ -148,7 +170,10 @@ namespace View.Controller
                 Communication.Communication.Instance.SacuvajPrisustva(prisustva);
                 MessageBox.Show("Prisustva su uspesno sacuvana!");
                 prisustva.Clear();
-                
+                txtDatumTreninga.Text = "";
+                txtVremeDo.Text = "";
+                txtGrupa.Text = "";
+                lblPrisustvo.Text = "Unos prisustva";
 
             }
             catch (SystemOperationException ex)

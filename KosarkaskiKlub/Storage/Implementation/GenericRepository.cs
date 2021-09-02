@@ -10,7 +10,7 @@ namespace Storage.Implementation
 {
     public class GenericRepository : IGenericRepository
     {
-        private Broker broker = new Broker();
+        private DBBroker broker = new DBBroker();
         public void BeginTransaction()
         {
             broker.BeginTransaction();

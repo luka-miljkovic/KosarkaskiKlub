@@ -20,7 +20,7 @@ namespace Domen
         [Browsable(false)]
         public string TableName => "Clanarina";
         [Browsable(false)]
-        public string InsertValues => $"{ClanarinaId}, {ClanKluba.ClanKlubaId}, '{Mesec}', {Godina}, '{DatumIsplate}', {Iznos}";
+        public string InsertValues => $"{ClanKluba.ClanKlubaId}, '{Mesec}', {Godina}, '{DatumIsplate}', {Iznos}";
         [Browsable(false)]
         public string IdName => "ClanarinaID";
         [Browsable(false)]

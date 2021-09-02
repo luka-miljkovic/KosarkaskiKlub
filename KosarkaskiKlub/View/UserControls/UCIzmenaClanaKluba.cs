@@ -19,7 +19,6 @@ namespace View.UserControls
         {
             InitializeComponent();
             this.izmenaClanaKlubaController = izmenaClanaKlubaController;
-            this.txtImePrezime.Text = "Luka Miljkovic";
         }
 
         private void btnPretrazi_Click(object sender, EventArgs e)
@@ -36,13 +35,9 @@ namespace View.UserControls
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             izmenaClanaKlubaController.SacuvajIzmene(txtId, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa, dgvClanoviKluba, txtImePrezime);
-            //MessageBox.Show("Izmene su uspesno sacuvane");
         }
 
-        //private void dgvClanoviKluba_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    izmenaClanaKlubaController.UcitajClanaKluba(dgvClanoviKluba, txtImePrezimeIzmena, dtpDatumRodjenja, dtpDatumUpisa, txtNazivSkole, cmbGrupa);
-        //}
+        
 
         private void dgvClanoviKluba_CellClick(object sender, DataGridViewCellEventArgs e)
         {

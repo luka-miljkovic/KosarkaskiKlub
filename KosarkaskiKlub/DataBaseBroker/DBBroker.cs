@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace DataBaseBroker
 {
-    public class Broker
+    public class DBBroker
     {
         private SqlConnection connection;
         private SqlTransaction transaction;
 
-        public Broker()
+        public DBBroker()
         {
             connection = new SqlConnection(ConfigurationManager.ConnectionStrings["KosarkaskiKlubDataBase"].ConnectionString);
         }

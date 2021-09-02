@@ -1,6 +1,7 @@
 ﻿using Domen;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace View.Controller
 {
     public class IzmenaTreningaController
     {
-        Trening trening = new Trening();
+        Trening trening = null;
         internal void Pretrazitreninge(DateTimePicker dtpDatumTreninga, TextBox txtGrupaPretraga, DataGridView dgvTreninzi, CheckBox cbDatum, CheckBox cbNaziv)
         {
             if(!cbNaziv.Checked && !cbDatum.Checked)
@@ -53,11 +54,12 @@ namespace View.Controller
             else
             {
                 dgvTreninzi.DataSource = listaTreninga;
+                dgvTreninzi.Columns["TreningId"].Visible = false;
                 MessageBox.Show("Prikaz treninga");
             }
         }
 
-        internal void UcitajTrening(DataGridView dgvTreninzi, TextBox txtGrupa, TextBox txtVremeOd, TextBox txtVremeDo, DateTimePicker dtpDatumTreninga, TextBox txtDanTreninga, ComboBox cmbSale, Button btnSacuvajIzmene)
+        internal void UcitajTrening(DataGridView dgvTreninzi,TextBox txttreningId, TextBox txtGrupa, TextBox txtVremeOd, TextBox txtVremeDo, DateTimePicker dtpDatumTreninga, TextBox txtDanTreninga, ComboBox cmbSale, Button btnSacuvajIzmene)
         {
             try
             {
@@ -77,6 +79,7 @@ namespace View.Controller
                 }
                 else
                 {
+                    txttreningId.Text = Convert.ToString(trening.TreningId);
                     txtGrupa.Text = trening.GrupaZaTreniranje.ToString();
                     txtVremeOd.Text = trening.VremeOd;
                     txtVremeDo.Text = trening.VremeDo;
@@ -96,8 +99,6 @@ namespace View.Controller
 
                     }
                 }
-                        
-                
             }
             catch (SystemOperationException ex)
             {
@@ -117,9 +118,36 @@ namespace View.Controller
                 return;
             }
 
+            string[] vremeOd = txtVremeOd.Text.Split(':');
+            string[] vremeDo = txtVremeDo.Text.Split(':');
+            int satOd = int.Parse(vremeOd[0]);
+            int satDo = int.Parse(vremeDo[0]);
+            int minOd = int.Parse(vremeOd[1]);
+            int minDo = int.Parse(vremeDo[1]);
+
+            if (satOd > satDo)
+            {
+                MessageBox.Show("Vreme pocetka treninga mora biti manje od vremena zavrsetka treninga");
+                txtVremeOd.BackColor = Color.LightCoral;
+                txtVremeDo.BackColor = Color.LightCoral;
+                return;
+            }
+            if (satOd == satDo && minOd >= minDo)
+            {
+                MessageBox.Show("Vreme pocetka treninga mora biti manje od vremena zavrsetka treninga");
+                txtVremeOd.BackColor = Color.LightCoral;
+                txtVremeDo.BackColor = Color.LightCoral;
+                return;
+            }
+
+            if (trening == null)
+            {
+                MessageBox.Show("Niste odabrali trening koji zelite da izmenite");
+                return;
+            }
+
             try
             {
-                //GrupaZaTreniranje = (GrupaZaTreniranje)cmbGrupe.SelectedItem,
                 trening.VremeOd = (string)txtVremeOd.Text;
                 trening.VremeDo = (string)txtVremeDo.Text;
                 trening.DatumTreninga = dtpDatumTreninga.Value.Date;
@@ -132,8 +160,6 @@ namespace View.Controller
                 txtVremeOd.Text = "";
                 txtVremeDo.Text = "";
                 dtpDatumTreninga.Value = DateTime.Now;
-                //string dan = Convert.ToString(trening.DatumTreninga.DayOfWeek);
-                //txtDanTreninga.Text = dan;
                 cmbSale.SelectedIndex = -1;
             }
             catch (SystemOperationException ex)
@@ -147,44 +173,39 @@ namespace View.Controller
             txtDanTreninga.Text = Convert.ToString(dtpDatumTreninga.Value.DayOfWeek);
         }
 
-        internal void UcitajGrupe(ComboBox cmbGrupe)
-        {
-            cmbGrupe.DataSource = Communication.Communication.Instance.VratiGrupe();
-            cmbGrupe.SelectedIndex = -1;
-            cmbGrupe.Text = "Izaberite grupu";
-        }
-
         internal void UcitajSale(ComboBox cmbSale)
         {
-            cmbSale.DataSource = Communication.Communication.Instance.VratiSale();
-            cmbSale.SelectedIndex = -1;
-            cmbSale.Text = "Izaberite salu";
-        }
-
-        private int VratiIndexGrupe(GrupaZaTreniranje grupaZaTreniranje)
-        {
-            List<GrupaZaTreniranje> lista = Communication.Communication.Instance.VratiGrupe();
-            for (int i = 0; i < lista.Count; i++)
+            try
             {
-                if (lista[i].GrupaId == grupaZaTreniranje.GrupaId)
-                {
-                    return i;
-                }
+                cmbSale.DataSource = Communication.Communication.Instance.VratiSale();
+                cmbSale.SelectedIndex = -1;
+                cmbSale.Text = "Izaberite salu";
             }
-            return -1;
+            catch (SystemOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private int VratiIndexSale(SalaZaTrening sala)
         {
-            List<SalaZaTrening> lista = Communication.Communication.Instance.VratiSale();
-            for (int i = 0; i < lista.Count; i++)
+            try
             {
-                if (lista[i].SalaZaTreningId == sala.SalaZaTreningId)
+                List<SalaZaTrening> lista = Communication.Communication.Instance.VratiSale();
+                for (int i = 0; i < lista.Count; i++)
                 {
-                    return i;
+                    if (lista[i].SalaZaTreningId == sala.SalaZaTreningId)
+                    {
+                        return i;
+                    }
                 }
+                return -1;
             }
-            return -1;
+            catch (SystemOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
         }
     }
 }

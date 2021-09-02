@@ -18,7 +18,7 @@ namespace Domen
         public string ImePrezime { get; set; }
         public DateTime DatumZaposlenja { get; set; }
         public DateTime DatumRodjenja { get; set; }
-        public bool Ulogovan { get; set; }
+        public bool VecUlogovan { get; set; }
 
         //To-Do
         [Browsable(false)]

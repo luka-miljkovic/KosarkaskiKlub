@@ -16,8 +16,8 @@ namespace SystemOperations.GrupaZaTreniranjeSO
             Repository.Save(grupa);
 
             int grupaId = Repository.GetNewId(new GrupaZaTreniranje());
-            List<Trening> lista = Repository.GetAll(new Trening()).Cast<Trening>().ToList();
-            int rbTreninga = ((Repository.GetNewId(new Trening()) == 1 && (lista == null || lista.Count == 0)) ? 1 : Repository.GetNewId(new Trening()) + 1);
+            //List<Trening> lista = Repository.GetAll(new Trening()).Cast<Trening>().ToList();
+            //int rbTreninga = ((Repository.GetNewId(new Trening()) == 1 && (lista == null || lista.Count == 0)) ? 1 : Repository.GetNewId(new Trening()) + 1);
 
 
             foreach (Trening trening in grupa.Treninzi)
@@ -34,11 +34,11 @@ namespace SystemOperations.GrupaZaTreniranjeSO
                         
                         while (dateIterator <= grupa.DatumDo)
                         {
-                            trening.TreningId = rbTreninga;
+                            //trening.TreningId = rbTreninga;
                             trening.DatumTreninga = dateIterator;
                             Repository.Save(trening);
                             dateIterator = dateIterator.AddDays(7);
-                            rbTreninga++;
+                            //rbTreninga++;
                         }
                         break;
                     }

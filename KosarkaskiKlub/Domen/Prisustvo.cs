@@ -34,8 +34,11 @@ namespace Domen
         public string WhereCondition => $"t.TreningID = {Trening.TreningId} and t.GrupaZaTreniranjeID = {Trening.TreningId}";
         [Browsable(false)]
         public string GetUpdateValues => "";
+
         [Browsable(false)]
-        public string GeneralCondition => $"t.TreningID = {Trening.TreningId} and t.GrupaZaTreniranjeID = {Trening.GrupaZaTreniranje.GrupaId}";
+        public string GCondition { get; set; }
+        [Browsable(false)]
+        public string GeneralCondition => $"{GCondition}";
 
         public List<IEntity> GetEntities(SqlDataReader reader)
         {

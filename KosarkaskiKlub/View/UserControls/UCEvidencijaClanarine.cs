@@ -20,9 +20,6 @@ namespace View.UserControls
         {
             InitializeComponent();
             this.evidencijaClanarineController = evidencijaClanarineController;
-            txtImePrezime.Text = "Luka Miljkovic";
-            txtGodina.Text = "2020";
-            txtIznos.Text = "2000.00";
         }
 
         private void btnPretrazi_Click(object sender, EventArgs e)
@@ -38,6 +35,11 @@ namespace View.UserControls
         private void dgvClanKluba_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             evidencijaClanarineController.UcitajClana(dgvClanKluba, dgvClanarine, txtIdClanaKluba, txtImePrezimeClana, btnSacuvajUplatu);
+        }
+
+        private void UCEvidencijaClanarine_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

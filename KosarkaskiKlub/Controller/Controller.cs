@@ -51,7 +51,7 @@ namespace Controller
         //TRENER
         public Trener Login(Trener trener)
         {
-            LoginSO so = new LoginSO();
+            PrijaviTreneraSO so = new PrijaviTreneraSO();
             so.ExecuteTemplate(trener);
             return so.Result;
         }

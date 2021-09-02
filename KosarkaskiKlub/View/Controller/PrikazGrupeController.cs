@@ -38,41 +38,52 @@ namespace View.Controller
 
         internal void UcitajGrupu(DataGridView dgvGrupe, DataGridView dgvClanovi, DataGridView dgvTreninzi, TextBox txtIdGrupe, TextBox txtNaziv, TextBox txtDatumFormiranja, TextBox txtUzrast, TextBox txtTrener)
         {
-            DataGridViewRow selectedRow = dgvGrupe.SelectedCells[0].OwningRow;
-
-            GrupaZaTreniranje grupa = new GrupaZaTreniranje
+            try
             {
-                GCondition = $"GrupaID={((GrupaZaTreniranje)selectedRow.DataBoundItem).GrupaId}"
-            };
+                DataGridViewRow selectedRow = dgvGrupe.SelectedCells[0].OwningRow;
 
-            grupa = Communication.Communication.Instance.UcitajGrupu(grupa);
+                GrupaZaTreniranje grupa = new GrupaZaTreniranje
+                {
+                    GCondition = $"GrupaID={((GrupaZaTreniranje)selectedRow.DataBoundItem).GrupaId}"
+                };
 
-            if(grupa != null)
+                grupa = Communication.Communication.Instance.UcitajGrupu(grupa);
+                if (grupa == null)
+                {
+                    MessageBox.Show("Nije moguce ucitati grupu");
+                    return;
+                }
+                else
+                {
+                    txtIdGrupe.Text = Convert.ToString(grupa.GrupaId);
+                    txtNaziv.Text = grupa.NazivGrupe;
+                    txtDatumFormiranja.Text = $"{Convert.ToString(grupa.DatumFormiranja.Day)}.{Convert.ToString(grupa.DatumFormiranja.Month)}.{Convert.ToString(grupa.DatumFormiranja.Year)}.";
+                    txtUzrast.Text = grupa.UzrastGrupe;
+                    txtTrener.Text = grupa.Trener.ImePrezime;
+
+                    ClanKluba clanKluba = new ClanKluba
+                    {
+                        GCondition = $"GrupaZaTreniranjeID = {grupa.GrupaId}"
+                    };
+                    List<ClanKluba> clanovi = Communication.Communication.Instance.PretreziClana(clanKluba);
+                    dgvClanovi.DataSource = clanovi;
+                    dgvClanovi.Columns["ClanKlubaId"].Visible = false;
+                    dgvClanovi.Columns["GrupaZaTreniranje"].Visible = false;
+
+                    Trening trening = new Trening
+                    {
+                        GCondition = $"GrupaZaTreniranjeID = {grupa.GrupaId}"
+                    };
+                    List<Trening> treninzi = Communication.Communication.Instance.PretraziTreninge(trening);
+                    dgvTreninzi.DataSource = treninzi;
+                    dgvTreninzi.Columns["TreningId"].Visible = false;
+                    dgvTreninzi.Columns["GrupaZaTReniranje"].Visible = false;
+
+                }
+            }
+            catch (SystemOperationException ex)
             {
-                txtIdGrupe.Text = Convert.ToString(grupa.GrupaId);
-                txtNaziv.Text = grupa.NazivGrupe;
-                txtDatumFormiranja.Text = Convert.ToString(grupa.DatumFormiranja);
-                txtUzrast.Text = grupa.UzrastGrupe;
-                txtTrener.Text = grupa.Trener.ImePrezime;
-
-                ClanKluba clanKluba = new ClanKluba
-                {
-                    GCondition = $"GrupaZaTreniranjeID = {grupa.GrupaId}"
-                };
-                List<ClanKluba> clanovi = Communication.Communication.Instance.PretreziClana(clanKluba);
-                dgvClanovi.DataSource = clanovi;
-                dgvClanovi.Columns["ClanKlubaId"].Visible = false;
-                dgvClanovi.Columns["GrupaZaTreniranje"].Visible = false;
-
-                Trening trening = new Trening
-                {
-                    GCondition = $"GrupaZaTreniranjeID = {grupa.GrupaId}"
-                };
-                List<Trening> treninzi = Communication.Communication.Instance.PretraziTreninge(trening);
-                dgvTreninzi.DataSource = treninzi;
-                dgvTreninzi.Columns["TreningId"].Visible = false;
-                dgvTreninzi.Columns["GrupaZaTReniranje"].Visible = false;
-
+                MessageBox.Show(ex.Message);
             }
 
         }

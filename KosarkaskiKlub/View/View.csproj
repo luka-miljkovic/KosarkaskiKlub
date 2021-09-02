@@ -180,7 +180,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\undraw_basketball_agx41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coach-rafiki_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undraw_Done_checking_re_6vyx_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undraw_greek_freak_j2qb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

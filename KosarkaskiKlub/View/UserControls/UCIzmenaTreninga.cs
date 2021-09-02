@@ -18,24 +18,24 @@ namespace View.UserControls
         {
             InitializeComponent();
             this.izmenaTreningaController = izmenaTreningaController;
-            this.dtpDatumTreningaIzbor.Value = Convert.ToDateTime("10.10.2020");
         }
 
         private void btnPretrazi_Click(object sender, EventArgs e)
         {
-
             izmenaTreningaController.Pretrazitreninge(dtpDatumTreningaIzbor, txtGrupaPretraga, dgvTreninzi, cbDatum, cbNaziv);
         }
 
         private void dgvTreninzi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            izmenaTreningaController.UcitajTrening(dgvTreninzi, txtGrupa, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale, btnSacuvajIzmene);
+            izmenaTreningaController.UcitajTrening(dgvTreninzi, txtTreningId, txtGrupa, txtVremeOd, txtVremeDo, dtpDatumTreninga, txtDanTreninga, cmbSale, btnSacuvajIzmene);
         }
 
         private void UCIzmenaTreninga_Load(object sender, EventArgs e)
         {
             izmenaTreningaController.UcitajSale(cmbSale);
-       }
+
+
+        }
 
         private void dtpDatumTreninga_ValueChanged(object sender, EventArgs e)
         {

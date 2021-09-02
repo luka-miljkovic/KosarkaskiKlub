@@ -215,12 +215,12 @@ namespace View.Communication
             client.GetResponseResult();
         }
 
-        internal Trener Login(string korisnickoIme, string lozinka)
+        internal Trener Login(Trener trener)
         {
             Request request = new Request
             {
                 Operation = Operation.Login,
-                RequestObject = new Trener { KorisnickoIme = korisnickoIme, Lozinka = lozinka }
+                RequestObject = trener
             };
             client.SendRequest(request);
             return (Trener)client.GetResponseResult();

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,8 +41,9 @@ namespace View.Controller
                 }
                 else
                 {
-                    dgvClanoviKluba.DataSource = new BindingList<ClanKluba>(listaClanova);
                     MessageBox.Show("Prikaz clanova kluba");
+                    dgvClanoviKluba.DataSource = new BindingList<ClanKluba>(listaClanova);
+                    dgvClanoviKluba.Columns["ClanKlubaId"].Visible = false;
                 }
             }
             catch (NullReferenceException ex)
@@ -53,6 +55,19 @@ namespace View.Controller
         internal void SacuvajIzmene(TextBox txtId, TextBox txtImePrezimeIzmena, DateTimePicker dtpDatumRodjenja, DateTimePicker dtpDatumUpisa, TextBox txtNazivSkole, ComboBox cmbGrupa, DataGridView dgvClanoviKluba, TextBox txtImePrezime)
         {
             ClanKluba clanKluba = new ClanKluba();
+
+            if(dtpDatumRodjenja.Value.Date >= DateTime.Now)
+            {
+                MessageBox.Show("Datum rodjenja ne sme biti veci od danasnjeg dana");
+                return;
+            }
+
+            if (!UserControlHelpers.EmptyFieldValidation(txtId))
+            {
+                txtId.BackColor = Color.White;
+                MessageBox.Show("Niste izabrali clana kluba");
+                return;
+            }
 
             clanKluba.ClanKlubaId = Convert.ToInt32(txtId.Text);
             clanKluba.ImePrezime = txtImePrezimeIzmena.Text;

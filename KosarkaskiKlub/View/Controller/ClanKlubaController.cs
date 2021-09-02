@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using View.Exceptions;
 using View.Helpers;
 
 namespace View.Controller
@@ -42,17 +43,36 @@ namespace View.Controller
                 return;
             }
 
-            ClanKluba clanKluba = new ClanKluba
+            if(dtpDatumRodjenja.Value.Date >= DateTime.Now)
             {
-                ImePrezime = txtImePrezime.Text,
-                DatumRodjenja = dtpDatumRodjenja.Value.Date,
-                DatumUpisa = dtpDatumUpisa.Value.Date,
-                NazivSkole = txtSkola.Text,
-                GrupaZaTreniranje = (GrupaZaTreniranje)cmbGrupa.SelectedItem
-            };
+                MessageBox.Show("Datum rodjenja ne sme biti veci od danasnjeg dana");
+                return;                                     
+            }
 
-            Communication.Communication.Instance.SacuvajClana(clanKluba);
-            MessageBox.Show("Clan je uspesno sacuvan!");
+            try
+            {
+                ClanKluba clanKluba = new ClanKluba
+                {
+                    ImePrezime = txtImePrezime.Text,
+                    DatumRodjenja = dtpDatumRodjenja.Value.Date,
+                    DatumUpisa = dtpDatumUpisa.Value.Date,
+                    NazivSkole = txtSkola.Text,
+                    GrupaZaTreniranje = (GrupaZaTreniranje)cmbGrupa.SelectedItem
+                };
+
+                Communication.Communication.Instance.SacuvajClana(clanKluba);
+                MessageBox.Show("Clan je uspesno sacuvan!");
+                txtImePrezime.Text = "";
+                dtpDatumRodjenja.Value = DateTime.Now;
+                dtpDatumUpisa.Value = DateTime.Now;
+                txtSkola.Text = "";
+                cmbGrupa.SelectedIndex = -1;
+
+            }
+            catch (SystemOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
                 
     }

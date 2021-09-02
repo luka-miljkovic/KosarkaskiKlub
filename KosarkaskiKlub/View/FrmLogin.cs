@@ -28,8 +28,6 @@ namespace View
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            //Communication.Communication.Instance.Connect();
-            //this.Text = "Uspesno povezan!";
             txtKorisnickoIme.Text = "miki";
             txtLozinka.Text = "miki";
         }
@@ -39,7 +37,6 @@ namespace View
             if (loginController.Connect())
             {
                 loginController.Login(txtKorisnickoIme, txtLozinka, this);
-                //MessageBox.Show("Uspesno se konektovao na server");
             }
             
         }

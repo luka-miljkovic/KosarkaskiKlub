@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,27 +36,31 @@ namespace View.Controller
             else
             {
                 dgvClanKluba.DataSource = listaClanova;
+                dgvClanKluba.Columns["ClanKlubaId"].Visible = false;
                 MessageBox.Show("Prikaz clanova kluba");
             }
         }
 
         internal void SacuvajUplatu(DateTimePicker dtpDatumUplate, ComboBox cmbMesec, TextBox txtGodina, TextBox txtIznos, DataGridView dgvClanKluba, DataGridView dgvClanarine)
         {
-            if(!UserControlHelpers.ComboBoxValidation(cmbMesec) |
+            if (dgvClanKluba.CurrentRow == null)
+            {
+                MessageBox.Show("Niste izabrali clana kluba");
+                return;
+            }
+            if (!UserControlHelpers.ComboBoxValidation(cmbMesec) |
                 !UserControlHelpers.IntValidation(txtGodina) |
-                !UserControlHelpers.DoubleValidation(txtIznos)/* |
-                dgvClanKluba.CurrentRow != null*/)
+                !UserControlHelpers.DoubleValidation(txtIznos))
             {
                 return;
             }
-
             Clanarina clanarina = new Clanarina
             {
                 ClanKluba = (ClanKluba)dgvClanKluba.CurrentRow.DataBoundItem,
                 Mesec = (string)cmbMesec.SelectedItem,
                 Godina = Convert.ToInt32(txtGodina.Text),
                 DatumIsplate = dtpDatumUplate.Value.Date,
-                Iznos = Double.Parse(txtIznos.Text, System.Globalization.NumberStyles.AllowDecimalPoint)
+                Iznos = Convert.ToDouble(txtIznos.Text)
             };
 
             clanarina.GCondition = $"ClanKlubaID={clanarina.ClanKluba.ClanKlubaId} and Mesec='{clanarina.Mesec}' and Godina={clanarina.Godina}";

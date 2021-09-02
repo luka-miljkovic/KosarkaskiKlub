@@ -43,8 +43,11 @@ namespace View.Helpers
 
         internal static bool DoubleValidation(TextBox txtIznos)
         {
-            if(!double.TryParse(txtIznos.Text, out double _))
+            Regex proveriDouble = new Regex(@"^[0-9]*[.][0-9]*$");
+
+            if (!proveriDouble.IsMatch(txtIznos.Text))
             {
+                txtIznos.Text = "Morate uneti decimalni broj";
                 txtIznos.BackColor = Color.LightCoral;
                 return false;
             }
@@ -53,6 +56,19 @@ namespace View.Helpers
                 txtIznos.BackColor = Color.White;
                 return true;
             }
+            //if (!double.TryParse(txtIznos.Text, out double _))
+            //{
+            //    txtIznos.Text = "Morate uneti decimalni broj";
+            //    txtIznos.BackColor = Color.LightCoral;
+            //    return false;
+            //}
+            //else
+            //{
+            //    txtIznos.BackColor = Color.White;
+            //    return true;
+            //}
+
+            
         }
 
         public static bool ComboBoxValidation(ComboBox cmb)
@@ -73,6 +89,7 @@ namespace View.Helpers
         {
             if(!int.TryParse(txt.Text, out int _))
             {
+                txt.Text = "Morate uneti broj";
                 txt.BackColor = Color.LightCoral;
                 return false;
             }
@@ -89,6 +106,7 @@ namespace View.Helpers
 
             if (!proveriVreme.IsMatch(txt.Text))
             {
+                txt.Text = "Zahtevan format: hh:mm";
                 txt.BackColor = Color.LightCoral;
                 return false;
             }

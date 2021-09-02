@@ -24,7 +24,7 @@ namespace Domen
 
         public override string ToString()
         {
-            return $"{GrupaId}) {NazivGrupe}-{UzrastGrupe}";
+            return $"{NazivGrupe}-{UzrastGrupe}";
         }
 
         [Browsable(false)]

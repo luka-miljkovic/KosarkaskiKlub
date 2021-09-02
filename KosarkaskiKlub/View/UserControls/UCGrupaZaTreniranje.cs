@@ -21,10 +21,7 @@ namespace View.UserControls
         {
             this.grupaZaTreningController = grupaZaTreningController;
             InitializeComponent();
-            this.cmbUzrast.Text = "Izaberite uzrast";
-            this.txtNazivGrupe.Text = "grupa1";
-            this.txtVremeOd.Text = "18:00";
-            this.txtVremeDo.Text = "20:00";
+            
 
             //grupaZaTreningController.InitForm(this);
         }
@@ -36,15 +33,6 @@ namespace View.UserControls
         private void UCGrupaZaTreniranje_Load(object sender, EventArgs e)
         {
             grupaZaTreningController.UcitajSale(cmbSale);
-            if(listaTreninga == null || listaTreninga.Count == 0)
-            {
-                this.btnObrisiTrening.Enabled = false;
-            }
-            else
-            {
-                this.btnObrisiTrening.Enabled = true;
-
-            }
 
         }
 
@@ -72,6 +60,11 @@ namespace View.UserControls
         private void dgvTreninzi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnObrisiTrening.Enabled = true;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
